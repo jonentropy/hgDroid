@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Welcome to hgDroid</string>
+    <string name="app_name">hgDroid</string>
+    <string name="song_button">Select Song</string>
+    <string name="settings_label">Settings</string>
+    <string name="settings_title">hgDroid Settings</string>
+    <string name="settings_shortcut">s</string>
+    <string name="server_string">Server</string>
+    <string name="server_desc">IP address or hostname of hgd server</string>
+    <string name="port_string">Port</string>
+    <string name="port_desc">Port to use on the hgd server</string>
+    <string name="quit_label">Quit</string>
+    <string name="quit_shortcut">q</string>
+    <string name="enable_ssl">Enable SSL</string>
+    <string name="ssl_desc">Secures server communications with SSL</string>
+    <string name="username_string">Username</string>
+    <string name="username_desc">Your user name on the hgd server</string>
+    <string name="password_string">Password</string>
+    <string name="password_desc">Your password for the hgd server</string>
+    <string name="app_desc">Submit tracks to a running Hackathon Günther Daemon</string>
+</resources>
