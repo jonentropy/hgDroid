@@ -4,27 +4,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="30dip"
-    >
-    
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    
-    >
-        <TextView  
-            android:layout_width="fill_parent" 
-            android:layout_height="wrap_content"
-             
-            android:text="@string/hello"
-            android:gravity="center">
-        </TextView>   
-        <Button 
-            android:text="@string/song_button" 
-            android:layout_width="fill_parent" 
-            android:layout_height="wrap_content" 
-            android:id="@+id/song_button">
-        </Button>
+    >    
+	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"    
+	    >
+	        <TextView  
+	            android:layout_width="fill_parent" 
+	            android:layout_height="wrap_content"
+	             
+	            android:text="@string/hello"
+	            android:gravity="center">
+	        </TextView>   
+	        <Button 
+	            android:text="@string/song_button" 
+	            android:layout_width="fill_parent" 
+	            android:layout_height="wrap_content" 
+	            android:id="@+id/song_button">
+	        </Button>
    
-    </LinearLayout>
+		</LinearLayout>
 </LinearLayout>
