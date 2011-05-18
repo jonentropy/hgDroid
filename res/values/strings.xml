@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Welcome to hgDroid</string>
     <string name="app_name">hgDroid</string>
-    <string name="song_button">Select Song</string>
+    <string name="song_button">Queue Song</string>
     <string name="settings_label">Settings</string>
     <string name="settings_title">hgDroid Settings</string>
     <string name="settings_shortcut">s</string>
@@ -19,4 +19,6 @@
     <string name="password_string">Password</string>
     <string name="password_desc">Your password for the hgd server</string>
     <string name="app_desc">Submit tracks to a running Hackathon Günther Daemon</string>
+    <string name="nowplaying">Now Playing:</string>
+    <string name="crap_song">Crap Song!</string>
 </resources>
