@@ -13,7 +13,7 @@ import android.preference.PreferenceManager;
 
 public class Settings extends PreferenceActivity {
 	//Settings for the hgDroid client...
-	//Please ensure these names match the key ids in settings.xml
+	//Please ensure these names match the key IDs in settings.xml
 	//To ensure settings are correctly saved and restored in future
 	//versions of hgDroid.
 	private static final String HGD_SETTING_SERVER = "server";
