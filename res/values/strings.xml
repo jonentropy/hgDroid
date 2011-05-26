@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Welcome to hgDroid</string>
+    <string name="welcome">Welcome to hgDroid</string>
     <string name="app_name">hgDroid</string>
     <string name="song_button">Queue Song</string>
     <string name="settings_label">Settings</string>

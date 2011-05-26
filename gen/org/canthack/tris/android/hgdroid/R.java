@@ -14,9 +14,10 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int btnCrapSong=0x7f070002;
-        public static final int mitmQuit=0x7f070004;
-        public static final int mitmSettings=0x7f070003;
+        public static final int btnCrapSong=0x7f070003;
+        public static final int listView1=0x7f070002;
+        public static final int mitmQuit=0x7f070005;
+        public static final int mitmSettings=0x7f070004;
         public static final int nowplayingtext=0x7f070001;
         public static final int song_button=0x7f070000;
     }
@@ -31,7 +32,6 @@ public final class R {
         public static final int app_name=0x7f050001;
         public static final int crap_song=0x7f050014;
         public static final int enable_ssl=0x7f05000c;
-        public static final int hello=0x7f050000;
         public static final int nowplaying=0x7f050013;
         public static final int password_desc=0x7f050011;
         public static final int password_string=0x7f050010;
@@ -48,6 +48,7 @@ public final class R {
         public static final int ssl_desc=0x7f05000d;
         public static final int username_desc=0x7f05000f;
         public static final int username_string=0x7f05000e;
+        public static final int welcome=0x7f050000;
     }
     public static final class xml {
         public static final int settings=0x7f040000;

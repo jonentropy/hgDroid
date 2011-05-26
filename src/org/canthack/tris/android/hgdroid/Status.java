@@ -1,7 +1,6 @@
 // hgDroid - An Android client for the Hackathon Günther Daemon
 //
 // Copyright 2011 Tristan Linnell
-// Copyright 2011 Steve Savia
 //
 // Status.java - Main status Activity for the application.
 
