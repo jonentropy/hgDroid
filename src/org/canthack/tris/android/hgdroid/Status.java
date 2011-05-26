@@ -40,11 +40,13 @@ public class Status extends Activity {
     		case R.id.mitmQuit:
     			finish();
     			break;
-    		//todo add more menu items here...	
+    		//ToDo: add more menu items here...	
     			
     	}
     	return false;
     }
+    
+    //ToDo: add button handlers...
     
     
     
