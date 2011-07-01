@@ -9,8 +9,8 @@
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
-			<LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/LinearLayout">
-			    <ImageView android:src="@drawable/icon" android:id="@+id/song_item_albumart" android:paddingRight="15dip" android:layout_height="match_parent" android:layout_width="wrap_content"></ImageView>
+			<LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/LinearLayout" android:baselineAligned="true">
+			    <ImageView android:src="@drawable/icon" android:id="@+id/song_item_albumart" android:paddingRight="15dip" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_gravity="center"></ImageView>
 			
 			</LinearLayout>
 			
