@@ -9,6 +9,7 @@ package org.canthack.tris.android.hgdroid;
 import org.canthack.tris.android.media.SoundEffects;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 public class Status extends Activity implements OnClickListener{
 	private static final String TAG = "STATUS";
+	private static final int HGDROID_GETSONG = 1;
 	
     /** Called when the activity is first created. */
     @Override
@@ -31,6 +33,9 @@ public class Status extends Activity implements OnClickListener{
         //Set all button's event handlers to the Activity itself...
         View crapButton = this.findViewById(R.id.btnCrapSong);
         crapButton.setOnClickListener(this);
+        
+        View queueSongButton = this.findViewById(R.id.btnQueueSong);
+        queueSongButton.setOnClickListener(this);     
         
         //TODO add other buttons and views here...
     }
@@ -73,8 +78,36 @@ public class Status extends Activity implements OnClickListener{
 				
 			SoundEffects.playEffect(this, R.raw.crapsong);	
 			break;
-		//TODO Add more buttons here...
+			
+		case R.id.btnQueueSong:
+			//intent for song to submit...
+			ChooseSong();
+			break;
+		    //TODO Add more buttons here...
 			
 		}	
-	}      
+	}
+
+	private void ChooseSong() {
+		// Browse for and return the filename of a track from the phone memory/SD card
+		Log.d(TAG, "Selecting song...");
+		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("audio/*");
+        startActivityForResult(Intent.createChooser(intent, getResources().getText(R.string.select_song_intent)), HGDROID_GETSONG);
+	}     
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+	    if (resultCode == RESULT_CANCELED)
+	    	return;
+	    
+		if (requestCode == HGDROID_GETSONG) {
+		    //Select song callback...
+			Uri songURI = data.getData();
+			Log.d(TAG, "Song selected: " + songURI.toString());
+			
+	    }
+	    //ToDo: other callbacks go here
+		
+	}
 }

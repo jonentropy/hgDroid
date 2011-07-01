@@ -10,22 +10,34 @@ package org.canthack.tris.android.hgdroid;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int textColour=0x7f070000;
+    }
     public static final class drawable {
         public static final int icon=0x7f020000;
+        public static final int user=0x7f020001;
     }
     public static final class id {
-        public static final int btnCrapSong=0x7f090003;
-        public static final int btnQueueSong=0x7f090000;
-        public static final int lvNowPlaying=0x7f090002;
-        public static final int mitmQuit=0x7f090005;
-        public static final int mitmSettings=0x7f090004;
-        public static final int tvNowPlaying=0x7f090001;
+        public static final int LinearLayout=0x7f0a0004;
+        public static final int btnCrapSong=0x7f0a0003;
+        public static final int btnQueueSong=0x7f0a0000;
+        public static final int lvNowPlaying=0x7f0a0002;
+        public static final int mitmQuit=0x7f0a000c;
+        public static final int mitmSettings=0x7f0a000b;
+        public static final int song_item_album=0x7f0a0008;
+        public static final int song_item_albumart=0x7f0a0005;
+        public static final int song_item_artist=0x7f0a0006;
+        public static final int song_item_song=0x7f0a0007;
+        public static final int song_item_user=0x7f0a000a;
+        public static final int song_item_username=0x7f0a0009;
+        public static final int tvNowPlaying=0x7f0a0001;
     }
     public static final class layout {
         public static final int main=0x7f030000;
+        public static final int repository_list_item=0x7f030001;
     }
     public static final class menu {
-        public static final int menu=0x7f080000;
+        public static final int menu=0x7f090000;
     }
     public static final class raw {
         public static final int crapsong=0x7f050000;
@@ -42,6 +54,7 @@ public final class R {
         public static final int port_string=0x7f060008;
         public static final int quit_label=0x7f06000a;
         public static final int quit_shortcut=0x7f06000b;
+        public static final int select_song_intent=0x7f060015;
         public static final int server_desc=0x7f060007;
         public static final int server_string=0x7f060006;
         public static final int settings_label=0x7f060003;
@@ -54,7 +67,7 @@ public final class R {
         public static final int welcome=0x7f060000;
     }
     public static final class style {
-        public static final int LightThemeSelector=0x7f070000;
+        public static final int LightThemeSelector=0x7f080000;
     }
     public static final class xml {
         public static final int settings=0x7f040000;

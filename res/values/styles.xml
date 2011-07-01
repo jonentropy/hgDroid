@@ -21,4 +21,6 @@
     <string name="app_desc">Submit tracks to a running Hackathon Günther Daemon</string>
     <string name="nowplaying">Now Playing:</string>
     <string name="crap_song">Crap Song!</string>
+    <color name="textColour">#C0C0FF</color>
+    <string name="select_song_intent">Select Song</string>
 </resources>
