@@ -38,6 +38,9 @@ public class Status extends Activity implements OnClickListener{
         queueSongButton.setOnClickListener(this);     
         
         //TODO add other buttons and views here...
+        
+        //create the service...
+        startService(new Intent(Status.this, HGDClientService.class));
     }
     
     //Creates menus
@@ -58,6 +61,10 @@ public class Status extends Activity implements OnClickListener{
     			startActivity(new Intent(this, Settings.class));
     			return true;
     		case R.id.mitmQuit:
+    			//stop service first...
+    			
+    			//ToDo: do we want to stop the thread first?
+    			stopService(new Intent(Status.this, HGDClientService.class));
     			finish();
     			break;
     		//TODO: add more menu items here...	
@@ -105,6 +112,8 @@ public class Status extends Activity implements OnClickListener{
 		    //Select song callback...
 			Uri songURI = data.getData();
 			Log.d(TAG, "Song selected: " + songURI.toString());
+			
+			
 			
 	    }
 	    //ToDo: other callbacks go here
