@@ -74,7 +74,6 @@ public class Status extends Activity implements OnClickListener{
     }
 
     //Handle button clicks etc.
-	@Override
 	public void onClick(View v) {		
 		switch(v.getId()) {
 		case R.id.btnCrapSong:

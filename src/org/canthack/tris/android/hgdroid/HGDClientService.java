@@ -48,7 +48,6 @@ public class HGDClientService extends Service {
 	
 	class HGDClient implements Runnable {
 		
-		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			Log.d(TAG, "Work");
