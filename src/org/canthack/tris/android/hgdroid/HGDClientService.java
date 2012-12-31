@@ -17,43 +17,54 @@ import android.util.Log;
 
 public class HGDClientService extends Service {
 	private final static String TAG = "HGDClientService";
-	
+
 	private boolean connected = false;
+	private boolean threadRunning = false;
+	private Thread hgdThread;
 	
 	@Override
 	public void onCreate() {	
 		Log.d(TAG, "Create");
 		super.onCreate();
-		Thread hgdThread = new Thread(null, new HGDClient(), "HGDClientService");
+		hgdThread = new Thread(null, new HGDClient(), "HGDClientService");
 		hgdThread.start();
+		threadRunning = true;
 	}
-	
+
 	@Override
 	public IBinder onBind(Intent i) {
 		Log.d(TAG, "onBind");
 		return null;
 	}
-	
-	public void OnDestroy() {
-		Log.d(TAG, "Destroy");
+
+	@Override
+	public void onDestroy() {
+		Log.d(TAG, "onDestroy");
+		threadRunning = false;
 		super.onDestroy();
 	}
-	
+
 	public boolean queueSong(Uri song) throws IOException, HGDroidException { //ToDo: Exception types
 		if (!connected) {
 			throw new HGDroidException("test");
 		}
 		return true;
 	}
-	
-	class HGDClient implements Runnable {
-		
+
+	class HGDClient implements Runnable {	
 		public void run() {
-			// TODO Auto-generated method stub
-			Log.d(TAG, "Work");
-			
+			Log.d(TAG, "Thread starting");
+			while(threadRunning){
+				Log.d(TAG, "Work");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
 		}
-		
+
 	}
 
 }

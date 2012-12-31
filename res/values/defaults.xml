@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="default_port">6633</integer>
+    <string name="default_hostname">192.168.1.69</string>
+    <string name="default_username"></string>
+    <string name="default_password"></string>
+    <bool name="default_ssl">false</bool>
+</resources>

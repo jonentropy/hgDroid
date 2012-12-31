@@ -15,9 +15,9 @@
 			</LinearLayout>
 			
 			<LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:orientation="vertical" android:id="@+id/LinearLayout">
-				<TextView android:text="Artist" android:textColor="@color/textColour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_artist"></TextView>
-			    <TextView android:text="Song" android:textColor="@color/textColour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_song"></TextView>
-			    <TextView android:text="Album" android:textColor="@color/textColour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_album"></TextView>
+				<TextView android:text="Artist" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_artist"></TextView>
+			    <TextView android:text="Song" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_song"></TextView>
+			    <TextView android:text="Album" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_album"></TextView>
 			</LinearLayout>
 		</LinearLayout>
 	</LinearLayout>
@@ -35,7 +35,6 @@
 			<TextView
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
-				android:textColor="@color/textColour"
 				android:textSize="10sp"
 				android:gravity="center_vertical"
 				android:paddingRight="5dip"

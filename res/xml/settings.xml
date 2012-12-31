@@ -2,11 +2,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="@string/settings_title">
 	<EditTextPreference android:summary="@string/server_desc"
-		android:title="@string/server_string" android:defaultValue="192.168.0.57"
+		android:title="@string/server_string" android:defaultValue="@string/default_hostname"
 		android:dialogTitle="@string/server_string" android:key="server" />
 	<EditTextPreference android:numeric="integer"
 		android:summary="@string/port_desc" android:title="@string/port_string"
-		android:defaultValue="4444" android:dialogTitle="@string/port_string"
+		android:defaultValue="@integer/default_port" android:dialogTitle="@string/port_string"
 		android:key="port">android:numeric="true"</EditTextPreference>
 	<CheckBoxPreference android:summary="@string/ssl_desc"
 		android:title="@string/enable_ssl" android:key="ssl" />

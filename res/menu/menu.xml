@@ -2,5 +2,5 @@
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/settings_label" android:id="@+id/mitmSettings" android:alphabeticShortcut="@string/settings_shortcut" android:icon="@android:drawable/ic_menu_preferences" android:showAsAction="ifRoom|withText"></item>
-    <item android:id="@+id/mitmQuit" android:alphabeticShortcut="@string/quit_shortcut" android:title="@string/quit_label" android:icon="@android:drawable/ic_lock_power_off" android:showAsAction="ifRoom|withText"></item>
+    <item android:id="@+id/mitmDisconnect" android:alphabeticShortcut="@string/disconnect_shortcut" android:title="@string/disconnect_label" android:icon="@android:drawable/ic_menu_close_clear_cancel" ></item>
 </menu>

@@ -7,7 +7,7 @@
 package org.canthack.tris.android.hgdroid;
 
 import org.canthack.tris.android.media.SoundEffects;
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-public class Status extends Activity implements OnClickListener{
+public class Status extends ListActivity implements OnClickListener{
 	private static final String TAG = "STATUS";
 	private static final int HGDROID_GETSONG = 1;
 	
@@ -33,12 +33,9 @@ public class Status extends Activity implements OnClickListener{
         //Set all button's event handlers to the Activity itself...
         View crapButton = this.findViewById(R.id.btnCrapSong);
         crapButton.setOnClickListener(this);
-        
-        View queueSongButton = this.findViewById(R.id.btnQueueSong);
-        queueSongButton.setOnClickListener(this);     
-        
+                
         //TODO add other buttons and views here...
-        
+             
         //create the service...
         startService(new Intent(Status.this, HGDClientService.class));
     }
@@ -60,12 +57,9 @@ public class Status extends Activity implements OnClickListener{
     		case R.id.mitmSettings:
     			startActivity(new Intent(this, Settings.class));
     			return true;
-    		case R.id.mitmQuit:
+    		case R.id.mitmDisconnect:
     			//stop service first...
-    			
-    			//ToDo: do we want to stop the thread first?
     			stopService(new Intent(Status.this, HGDClientService.class));
-    			finish();
     			break;
     		//TODO: add more menu items here...	
     			
@@ -74,7 +68,9 @@ public class Status extends Activity implements OnClickListener{
     }
 
     //Handle button clicks etc.
-	public void onClick(View v) {		
+    @Override
+	public void onClick(View v) {	
+		Log.v(TAG, "Clicked!");
 		switch(v.getId()) {
 		case R.id.btnCrapSong:
 			//TODO add proper logic here. just a test for now
@@ -83,14 +79,7 @@ public class Status extends Activity implements OnClickListener{
 			t.show();
 				
 			SoundEffects.playEffect(this, R.raw.crapsong);	
-			break;
-			
-		case R.id.btnQueueSong:
-			//intent for song to submit...
-			ChooseSong();
-			break;
-		    //TODO Add more buttons here...
-			
+			break;			
 		}	
 	}
 
@@ -111,8 +100,6 @@ public class Status extends Activity implements OnClickListener{
 		    //Select song callback...
 			Uri songURI = data.getData();
 			Log.d(TAG, "Song selected: " + songURI.toString());
-			
-			
 			
 	    }
 	    //ToDo: other callbacks go here

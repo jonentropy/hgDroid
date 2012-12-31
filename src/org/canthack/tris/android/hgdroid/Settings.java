@@ -21,38 +21,31 @@ public class Settings extends PreferenceActivity {
 	private static final String HGD_SETTING_USERNAME = "uname";
 	private static final String HGD_SETTING_PASSWORD = "pwd";
 	private static final String HGD_SETTING_SSL = "ssl";
-	
-	//Default Values
-	private static final String HGD_SETTING_SERVER_DEF = "192.168.0.57";
-	private static final int HGD_SETTING_PORT_DEF = 4444; //ToDo: Change to the real default port (also edit settings.xml)
-	private static final String HGD_SETTING_USERNAME_DEF = "";
-	private static final String HGD_SETTING_PASSWORD_DEF = "";
-	private static final boolean HGD_SETTING_SSL_DEF = true;	
-	
+		
 	//Settings
 	public static String getServerAddress(Context context) {
-		return PreferenceManager.getDefaultSharedPreferences(context).
-			getString(HGD_SETTING_SERVER, HGD_SETTING_SERVER_DEF);
+		return PreferenceManager.getDefaultSharedPreferences(context)
+			.getString(HGD_SETTING_SERVER, context.getResources().getString(R.string.default_hostname));
 	}
 	
 	public static int getServerPort(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
-			.getInt(HGD_SETTING_PORT, HGD_SETTING_PORT_DEF);
+			.getInt(HGD_SETTING_PORT, context.getResources().getInteger(R.integer.default_port));
 	}
 	
 	public static String getUserName(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context).
-			getString(HGD_SETTING_USERNAME, HGD_SETTING_USERNAME_DEF);
+			getString(HGD_SETTING_USERNAME, context.getResources().getString(R.string.default_username));
 	}
 	
 	public static String getPassword(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context).
-			getString(HGD_SETTING_PASSWORD, HGD_SETTING_PASSWORD_DEF);
+			getString(HGD_SETTING_PASSWORD, context.getResources().getString(R.string.default_password));
 	}
 	
 	public static boolean getSSL(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
-			.getBoolean(HGD_SETTING_SSL, HGD_SETTING_SSL_DEF);
+			.getBoolean(HGD_SETTING_SSL, context.getResources().getBoolean(R.bool.default_ssl));
 	}
 	
 	@Override
