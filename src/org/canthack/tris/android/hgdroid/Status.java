@@ -37,7 +37,7 @@ public class Status extends ListActivity implements OnClickListener{
         //TODO add other buttons and views here...
              
         //create the service...
-        startService(new Intent(Status.this, HGDClientService.class));
+        startService(new Intent(Status.this, HgdNowPlayingService.class));
     }
     
     //Creates menus
@@ -59,7 +59,7 @@ public class Status extends ListActivity implements OnClickListener{
     			return true;
     		case R.id.mitmDisconnect:
     			//stop service first...
-    			stopService(new Intent(Status.this, HGDClientService.class));
+    			stopService(new Intent(Status.this, HgdNowPlayingService.class));
     			break;
     		//TODO: add more menu items here...	
     			
