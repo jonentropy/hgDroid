@@ -15,20 +15,22 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
-        public static final int icon=0x7f020001;
-        public static final int user=0x7f020002;
+        public static final int ic_stat_disconnect=0x7f020001;
+        public static final int ic_stat_vote_off=0x7f020002;
+        public static final int user=0x7f020003;
     }
     public static final class id {
         public static final int LinearLayout=0x7f0b0002;
+        public static final int LinearLayout2=0x7f0b0004;
         public static final int btnCrapSong=0x7f0b0000;
-        public static final int mitmDisconnect=0x7f0b000a;
-        public static final int mitmSettings=0x7f0b0009;
-        public static final int song_item_album=0x7f0b0006;
+        public static final int mitmDisconnect=0x7f0b000b;
+        public static final int mitmSettings=0x7f0b000a;
+        public static final int song_item_album=0x7f0b0007;
         public static final int song_item_albumart=0x7f0b0003;
-        public static final int song_item_artist=0x7f0b0004;
-        public static final int song_item_song=0x7f0b0005;
-        public static final int song_item_user=0x7f0b0008;
-        public static final int song_item_username=0x7f0b0007;
+        public static final int song_item_artist=0x7f0b0005;
+        public static final int song_item_song=0x7f0b0006;
+        public static final int song_item_user=0x7f0b0009;
+        public static final int song_item_username=0x7f0b0008;
         public static final int tvNowPlaying=0x7f0b0001;
     }
     public static final class integer {
@@ -47,6 +49,7 @@ public final class R {
     public static final class string {
         public static final int app_desc=0x7f070014;
         public static final int app_name=0x7f070003;
+        public static final int close=0x7f070018;
         public static final int crap_song=0x7f070016;
         public static final int default_hostname=0x7f070000;
         public static final int default_password=0x7f070002;

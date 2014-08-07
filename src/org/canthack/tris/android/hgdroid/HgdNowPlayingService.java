@@ -22,37 +22,96 @@ import android.util.Log;
  */
 public class HgdNowPlayingService extends Service {
 	private final static String TAG = "HgdNowPlayingService";
+	private final static String EXTRA_STOP_SERVICE = "stop";
 
-	private volatile boolean connected = false;
-	private volatile boolean threadRunning = false;
+	private volatile boolean threadRunning;
+	private volatile boolean foreground;
 	private Thread hgdThread;
 	private NotificationManager mNotificationManager;
 	private int notificationId = 1;
-	
+	private Notification.Builder nowPlayingBuilder, notConnectedBuilder, currentBuilder;
+
 	@Override
 	public void onCreate() {	
 		Log.d(TAG, "Create");
 		super.onCreate();
 		
+		mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		initNotifications();
+
 		hgdThread = new Thread(null, new HGDClient(), "HGDClientService");
 		hgdThread.start();
 		threadRunning = true;
-		
-		mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 	}
+
+	private void initNotifications() {
+		notConnectedBuilder =
+		        new Notification.Builder(this)
+		        .setSmallIcon(R.drawable.ic_launcher)
+		        .setContentTitle(getString(R.string.app_name))
+		        .setContentText("Not connected!"); //temp. will not display notif until connected
+		
+		Intent toStatusIntent = new Intent(this, Status.class);
+
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		stackBuilder.addParentStack(Status.class);
+		stackBuilder.addNextIntent(toStatusIntent);
+		
+		PendingIntent toStatusPendingIntent =
+		        stackBuilder.getPendingIntent(
+		            0,
+		            PendingIntent.FLAG_UPDATE_CURRENT
+		        );
+		notConnectedBuilder.setContentIntent(toStatusPendingIntent);
 	
+		Intent intent = new Intent(HgdNowPlayingService.this, HgdNowPlayingService.class);
+		intent.putExtra(HgdNowPlayingService.EXTRA_STOP_SERVICE, true);
+		
+		PendingIntent stopNowPlayingServicePendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		
+		notConnectedBuilder.addAction(R.drawable.ic_stat_disconnect, getString(R.string.close), stopNowPlayingServicePendingIntent);
+
+		nowPlayingBuilder =
+		        new Notification.Builder(this)
+		        .setSmallIcon(R.drawable.ic_launcher)
+		        .setContentTitle("Track Name")
+		        .setContentText("Artist\nAlbum"); 
+		
+		nowPlayingBuilder.setContentIntent(toStatusPendingIntent);
+
+		//TODO INTENT FOR VOTE OFF PendingIntent stopNowPlayingServicePendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		nowPlayingBuilder.addAction(R.drawable.ic_stat_vote_off, getString(R.string.crap_song), null); //INTENT HERE
+		
+		currentBuilder = nowPlayingBuilder;
+	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		if(intent != null && intent.getExtras() != null && intent.getExtras().getBoolean("Shutdown")) stopSelf();
-		return super.onStartCommand(intent, flags, startId);
+		if(intent != null && intent.getExtras() != null){
+			if(intent.getExtras().getBoolean(HgdNowPlayingService.EXTRA_STOP_SERVICE)) stopSelf();
+		}
+		
+		return Service.START_STICKY;
 	}
 
+	@Override
+	public void onRebind(Intent intent) {
+	    stopForeground(true); 
+	    foreground = false;
+	}
 
 	@Override
-	public IBinder onBind(Intent i) {
-		Log.d(TAG, "onBind");
-		return null;
+	public IBinder onBind(Intent intent) {
+	    stopForeground(true); 
+	    foreground = false;
+	    return null; //we have no interface, just knowing if bound or no
+	}
+
+	@Override
+	public boolean onUnbind(Intent intent) {
+	    startForeground(notificationId, currentBuilder.build()); 
+	    foreground = true;
+	    return true; 
 	}
 
 	@Override
@@ -66,51 +125,27 @@ public class HgdNowPlayingService extends Service {
 		public void run() {
 			Log.d(TAG, "Thread starting");
 			
-			Notification.Builder mBuilder =
-			        new Notification.Builder(HgdNowPlayingService.this)
-			        .setSmallIcon(R.drawable.ic_launcher)
-			        .setContentTitle("hgDroid")
-			        .setContentText("Not connected!");
-			
-			// Creates an explicit intent for an Activity in your app
-			Intent toStatusIntent = new Intent(HgdNowPlayingService.this, Status.class);
-
-			// The stack builder object will contain an artificial back stack for the
-			// started Activity.
-			// This ensures that navigating backward from the Activity leads out of
-			// your application to the Home screen.
-			TaskStackBuilder stackBuilder = TaskStackBuilder.create(HgdNowPlayingService.this);
-			// Adds the back stack for the Intent (but not the Intent itself)
-			stackBuilder.addParentStack(Status.class);
-			// Adds the Intent that starts the Activity to the top of the stack
-			stackBuilder.addNextIntent(toStatusIntent);
-			
-			PendingIntent toStatusPendingIntent =
-			        stackBuilder.getPendingIntent(
-			            0,
-			            PendingIntent.FLAG_UPDATE_CURRENT
-			        );
-			mBuilder.setContentIntent(toStatusPendingIntent);
-			mBuilder.addAction(R.drawable.ic_launcher, "To app", toStatusPendingIntent);
-			
-			Intent intent = new Intent(HgdNowPlayingService.this, HgdNowPlayingService.class);
-			intent.putExtra("Shutdown", true);
-			PendingIntent stopNowPlayingServicePendingIntent = PendingIntent.getService(HgdNowPlayingService.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-			mBuilder.addAction(R.drawable.ic_launcher, "Stop Service", stopNowPlayingServicePendingIntent);
-			
-			HgdNowPlayingService.this.startForeground(notificationId, mBuilder.build());
+			int i = 1;
 			
 			while(threadRunning){
-				Log.d(TAG, "Work");
+				//TODO this Service should startForeground when informations starts coming in from
+				//the server. It should stopSelf when the server has been idle? or errors have 
+				//occurred.
+				
+				Log.d(TAG, "Track " + i);
 				try {
-					Thread.sleep(1000);
+					nowPlayingBuilder.setContentText("Track  " + i);
+					
+					if(foreground) mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
+					
+					Thread.sleep(5000);
+					
+					i++;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-
 		}
-
 	}
 
 }
