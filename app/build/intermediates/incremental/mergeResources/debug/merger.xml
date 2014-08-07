@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res" >
+            <file
+                name="ic_launcher"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_disconnect"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-hdpi/ic_stat_disconnect.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_vote_off"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-hdpi/ic_stat_vote_off.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="user"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-hdpi/user.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_disconnect"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-mdpi/ic_stat_disconnect.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_vote_off"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-mdpi/ic_stat_vote_off.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="user"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-mdpi/user.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_disconnect"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xhdpi/ic_stat_disconnect.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_vote_off"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xhdpi/ic_stat_vote_off.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="user"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xhdpi/user.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_disconnect"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xxhdpi/ic_stat_disconnect.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_stat_vote_off"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xxhdpi/ic_stat_vote_off.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="user"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/drawable-xxhdpi/user.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="main"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/layout/main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="repository_list_item"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/layout/repository_list_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="menu"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/menu/menu.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="crapsong"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/raw/crapsong.ogg"
+                qualifiers=""
+                type="raw" />
+            <file
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/values/defaults.xml"
+                qualifiers="" >
+                <bool name="default_ssl" >
+false
+                </bool>
+
+                <string name="default_username" ></string>
+                <string name="default_password" ></string>
+                <string name="default_hostname" >192.168.1.69
+                </string>
+
+                <integer name="default_port" >
+6633
+                </integer>
+            </file>
+            <file
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string name="crap_song" >Crap Song!
+                </string>
+                <string name="port_string" >Port
+                </string>
+                <string name="ssl_desc" >Secures server communications with SSL
+                </string>
+                <string name="settings_label" >Settings
+                </string>
+                <string name="nowplaying" >Now Playing:
+                </string>
+                <string name="disconnect_label" >Disconnect
+                </string>
+                <string name="settings_title" >hgDroid Settings
+                </string>
+                <string name="password_desc" >Your password for the hgd server
+                </string>
+                <string name="password_string" >Password
+                </string>
+                <string name="username_string" >Username
+                </string>
+                <string name="select_song_intent" >Select Song
+                </string>
+                <string name="server_desc" >IP address or hostname of hgd server
+                </string>
+                <string name="port_desc" >Port to use on the hgd server
+                </string>
+                <string name="song_button" >Queue Song
+                </string>
+                <string name="disconnect_shortcut" >q
+                </string>
+                <string name="close" >Close
+                </string>
+                <string name="enable_ssl" >Enable SSL
+                </string>
+                <string name="server_string" >Server
+                </string>
+                <string name="username_desc" >Your user name on the hgd server
+                </string>
+                <string name="app_name" >hgDroid
+                </string>
+                <string name="settings_shortcut" >s
+                </string>
+                <string name="app_desc" >Submit tracks to a Hackathon Günther Daemon server
+                </string>
+            </file>
+            <file
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/values/themes.xml"
+                qualifiers="" >
+
+                <style
+                    name="LightThemeSelector"
+                    parent="android:Theme.Light" />
+            </file>
+            <file
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/values-v11/styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="ThemeSelector"
+                    parent="android:Theme.Holo" />
+            </file>
+            <file
+                name="settings"
+                path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/main/res/xml/settings.xml"
+                qualifiers=""
+                type="xml" />
+        </source>
+        <source path="/Users/tristan/AndroidstudioProjects/hgDroid/app/build/generated/res/rs/debug" />
+        <source path="/Users/tristan/AndroidstudioProjects/hgDroid/app/build/generated/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/tristan/AndroidstudioProjects/hgDroid/app/src/debug/res" />
+    </dataSet>
+
+</merger>
