@@ -104,7 +104,7 @@ public class HgdNowPlayingService extends Service {
     public IBinder onBind(Intent intent) {
         stopForeground(true);
         foreground = false;
-        return null; //we have no interface, just knowing if bound or no
+        return null; //we have no interface, just knowing if bound or not
     }
 
     @Override
@@ -123,12 +123,12 @@ public class HgdNowPlayingService extends Service {
 
     class HGDClient implements Runnable {
         public void run() {
-            Log.d(TAG, "Thread starting"); 
+            Log.d(TAG, "Thread starting");
 
             int i = 1;
 
             while(threadRunning){
-                //TODO this Service should startForeground when informations starts coming in from
+                //TODO this Service should startForeground when information starts coming in from
                 //the server. It should stopSelf when the server has been idle? or errors have
                 //occurred.
 

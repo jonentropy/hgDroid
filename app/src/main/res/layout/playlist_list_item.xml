@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
 	android:padding="5dip" android:layout_height="wrap_content">
 	<LinearLayout
@@ -10,13 +11,13 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 			<LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/LinearLayout" android:baselineAligned="true">
-			    <ImageView android:src="@drawable/ic_launcher" android:id="@+id/song_item_albumart" android:paddingRight="15dip" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_gravity="center"/>
+			    <ImageView tools:src="@drawable/ic_launcher" android:id="@+id/song_item_albumart" android:paddingRight="15dip" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_gravity="center"/>
 			</LinearLayout>
 
 			<LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:orientation="vertical" android:id="@+id/LinearLayout2">
-				<TextView android:text="Artist" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_artist"/>
-			    <TextView android:text="Song" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_song"/>
-			    <TextView android:text="Album" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13dip" android:id="@+id/song_item_album"/>
+				<TextView tools:text="Artist" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13sp" android:id="@+id/song_item_artist"/>
+			    <TextView tools:text="Song" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13sp" android:id="@+id/song_item_song"/>
+			    <TextView tools:text="Album" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13sp" android:id="@+id/song_item_album"/>
 			</LinearLayout>
 		</LinearLayout>
 	</LinearLayout>
@@ -24,7 +25,7 @@
 		android:orientation="vertical"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_centerVertical="true" android:layout_gravity="center_vertical">
+		android:layout_gravity="center_vertical">
 		<LinearLayout
 			android:orientation="horizontal"
 			android:gravity="center_vertical"
@@ -33,15 +34,14 @@
 			android:layout_width="wrap_content">
 			<TextView
 				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
+				android:layout_width="0dp"
 				android:textSize="12sp"
 				android:gravity="center_vertical"
-				android:paddingRight="5dip"
 				android:layout_weight="1"
-				android:text="user" android:id="@+id/song_item_username"/>
+				tools:text="user" android:id="@+id/song_item_username"/>
 			<ImageView
-				android:layout_width="16px"
-				android:layout_height="16px"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
 				android:src="@drawable/user" android:id="@+id/song_item_user"/>
 		</LinearLayout>
 	</LinearLayout>
