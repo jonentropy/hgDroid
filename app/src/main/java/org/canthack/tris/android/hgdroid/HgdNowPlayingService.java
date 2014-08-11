@@ -26,7 +26,6 @@ public class HgdNowPlayingService extends Service {
 
     private volatile boolean threadRunning;
     private volatile boolean foreground;
-    private Thread hgdThread;
     private NotificationManager mNotificationManager;
     private int notificationId = 1;
     private Notification.Builder nowPlayingBuilder, notConnectedBuilder, currentBuilder;
@@ -39,7 +38,7 @@ public class HgdNowPlayingService extends Service {
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         initNotifications();
 
-        hgdThread = new Thread(null, new HGDClient(), "HGDClientService");
+        Thread hgdThread = new Thread(null, new HGDClient(), "HGDClientService");
         hgdThread.start();
         threadRunning = true;
     }
@@ -49,7 +48,7 @@ public class HgdNowPlayingService extends Service {
                 new Notification.Builder(this)
                         .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle(getString(R.string.app_name))
-                        .setContentText("Not connected!"); //temp. will not display notif until connected
+                        .setContentText("Not connected!"); //temp. will not display notification until connected
 
         Intent toStatusIntent = new Intent(this, Status.class);
 

@@ -4,6 +4,7 @@ import org.canthack.tris.android.media.SoundEffects;
 
 import android.app.ListActivity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.Uri;
@@ -54,7 +55,7 @@ public class Status extends ListActivity implements OnClickListener{
 		super.onStart();
 		Intent intent = new Intent(Status.this, HgdNowPlayingService.class);
 		startService(intent);
-		bindService(intent, nowPlayingConnection, BIND_AUTO_CREATE | BIND_ADJUST_WITH_ACTIVITY);
+		bindService(intent, nowPlayingConnection, Context.BIND_AUTO_CREATE);
 	}
 
 	@Override

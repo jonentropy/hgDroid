@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="@string/settings_label" android:id="@+id/mitmSettings" android:alphabeticShortcut="@string/settings_shortcut" android:icon="@android:drawable/ic_menu_preferences" android:showAsAction="ifRoom|withText"/>
-    <item android:id="@+id/mitmDisconnect" android:alphabeticShortcut="@string/disconnect_shortcut" android:title="@string/disconnect_label" android:icon="@android:drawable/ic_menu_close_clear_cancel" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mitmSettings"
+        android:alphabeticShortcut="@string/settings_shortcut"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/settings_label" />
+    <item
+        android:id="@+id/mitmDisconnect"
+        android:alphabeticShortcut="@string/disconnect_shortcut"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/disconnect_label" />
 </menu>

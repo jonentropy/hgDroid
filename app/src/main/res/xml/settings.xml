@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-	android:title="@string/settings_title">
-	<EditTextPreference android:summary="@string/server_desc"
-		android:title="@string/server_string" android:defaultValue="@string/default_hostname"
-		android:dialogTitle="@string/server_string" android:key="server" />
-	<EditTextPreference android:numeric="integer"
-		android:summary="@string/port_desc" android:title="@string/port_string"
-		android:defaultValue="@integer/default_port" android:dialogTitle="@string/port_string"
-		android:key="port">android:numeric="true"</EditTextPreference>
-	<CheckBoxPreference android:summary="@string/ssl_desc"
-		android:title="@string/enable_ssl" android:key="ssl" />
-	<EditTextPreference android:summary="@string/username_desc"
-		android:dialogTitle="@string/username_string" android:title="@string/username_string"
-		android:key="uname" />
-	<EditTextPreference android:summary="@string/password_desc"
-		android:dialogTitle="@string/password_string" android:title="@string/password_string"
-		android:password="true" android:key="pwd" />
+    android:title="@string/settings_title">
+    <EditTextPreference
+        android:defaultValue="@string/default_hostname"
+        android:dialogTitle="@string/server_string"
+        android:key="server"
+        android:summary="@string/server_desc"
+        android:title="@string/server_string" />
+    <EditTextPreference
+        android:defaultValue="@integer/default_port"
+        android:dialogTitle="@string/port_string"
+        android:key="port"
+        android:numeric="integer"
+        android:summary="@string/port_desc"
+        android:title="@string/port_string">android:numeric="true"
+    </EditTextPreference>
+    <CheckBoxPreference
+        android:key="ssl"
+        android:summary="@string/ssl_desc"
+        android:title="@string/enable_ssl" />
+    <EditTextPreference
+        android:dialogTitle="@string/username_string"
+        android:key="uname"
+        android:summary="@string/username_desc"
+        android:title="@string/username_string" />
+    <EditTextPreference
+        android:dialogTitle="@string/password_string"
+        android:key="pwd"
+        android:password="true"
+        android:summary="@string/password_desc"
+        android:title="@string/password_string" />
 </PreferenceScreen>

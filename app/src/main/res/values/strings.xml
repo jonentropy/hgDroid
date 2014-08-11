@@ -22,4 +22,5 @@
     <string name="crap_song">Crap Song!</string>
     <string name="select_song_intent">Select Song</string>
     <string name="close">Close</string>
+    <string name="user_image_description">User Image</string>
 </resources>

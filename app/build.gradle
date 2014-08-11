@@ -1,19 +1,26 @@
 apply plugin: 'android'
-
 android {
+    signingConfigs {
+        config {
+            storeFile file('/Users/tristan/Development/androidkeystore')
+        }
+    }
     compileSdkVersion 20
-    buildToolsVersion "20.0.0"
-
+    buildToolsVersion '20.0.0'
     defaultConfig {
-        applicationId "org.canthack.tris.android.hgdroid"
+        applicationId 'org.canthack.tris.android.hgdroid'
         minSdkVersion 18
         targetSdkVersion 20
     }
-
     buildTypes {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    productFlavors {
+    }
+}
+
+dependencies {
 }

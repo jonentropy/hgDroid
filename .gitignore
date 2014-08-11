@@ -20,6 +20,7 @@ local.properties
 .project
 
 app/build/
+build/
 
 *.bin
 .gradle/

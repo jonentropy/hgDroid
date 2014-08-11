@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:padding="30dip" android:orientation="vertical"
-    android:id="@+id/status_layout">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/status_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="30dip"
+    tools:context=".Status">
 
-	<Button android:id="@+id/btnCrapSong" android:text="@string/crap_song"
-		android:layout_height="wrap_content" android:layout_width="wrap_content"
-		android:layout_gravity="center" />
+    <Button
+        android:id="@+id/btnCrapSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/crap_song" />
 
-	<TextView android:text="@string/nowplaying"
-		android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/tvNowPlaying"/>
-	<ListView android:layout_width="match_parent"
-		android:layout_height="wrap_content" android:id="@android:id/list"/>
+    <TextView
+        android:id="@+id/tvNowPlaying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nowplaying" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/playlist_list_item" />
 
 </LinearLayout>
