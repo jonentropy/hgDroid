@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.canthack.tris.android.hgdroid" android:versionCode="1"
-	android:versionName="1.0">
-	<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="20" />
-	<application 
-	    android:allowBackup="true"
-		android:label="@string/app_name"
-		android:description="@string/app_desc" android:icon="@drawable/ic_launcher" android:theme="@style/ThemeSelector"
-        android:supportsRtl="true">
-		<activity android:name=".Status" android:label="@string/app_name">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-		<activity android:name=".Settings" android:label="@string/settings_title" />
-		
-		<!-- Services -->
-		<service android:enabled="true"
-         android:exported="false"
-         android:name=".HgdNowPlayingService" />		
-	</application>
+    package="org.canthack.tris.android.hgdroid"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="20" />
+    <application
+        android:allowBackup="true"
+        android:description="@string/app_desc"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/ThemeSelector">
+        <activity
+            android:name=".Status"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/settings_title" />
+
+        <!-- Services -->
+        <service
+            android:name=".HgdNowPlayingService"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
 </manifest>

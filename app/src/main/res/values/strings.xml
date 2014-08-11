@@ -23,4 +23,6 @@
     <string name="select_song_intent">Select Song</string>
     <string name="close">Close</string>
     <string name="user_image_description">User Image</string>
+    <string name="queue_shortcut">t</string>
+    <string name="queue_song">Queue Song</string>
 </resources>

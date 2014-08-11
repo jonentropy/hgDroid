@@ -21,10 +21,10 @@ import android.widget.Toast;
 
 /**
  * hgDroid - An Android client for the Hackathon Gunther Daemon
- * 
+ *
  * Copyright 2014 Tristan Linnell
- *  
- * Status.java - Main Activity displaying playlist.
+ *
+ * Status.java - Main Activity displaying playlist_list_item.
  * @author tristan
  *
  */
@@ -70,7 +70,7 @@ public class Status extends ListActivity implements OnClickListener{
 		super.onCreateOptionsMenu(menu);
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu, menu);
-		return true;   	
+		return true;
 	}
 
 	//Handles menu clicks
@@ -85,7 +85,7 @@ public class Status extends ListActivity implements OnClickListener{
 			//stop service first...
 			stopService(new Intent(Status.this, HgdNowPlayingService.class));
 			break;
-			//TODO: add more menu items here...	
+			//TODO: add more menu items here...
 
 		}
 		return false;
@@ -93,7 +93,7 @@ public class Status extends ListActivity implements OnClickListener{
 
 	//Handle button clicks etc.
 	@Override
-	public void onClick(View v) {	
+	public void onClick(View v) {
 		Log.v(TAG, "Clicked!");
 		switch(v.getId()) {
 		case R.id.btnCrapSong:
@@ -102,9 +102,9 @@ public class Status extends ListActivity implements OnClickListener{
 			t.setGravity(Gravity.BOTTOM, 0, 0);
 			t.show();
 
-			SoundEffects.playEffect(this, R.raw.crapsong);	
-			break;			
-		}	
+			SoundEffects.playEffect(this, R.raw.crapsong);
+			break;
+		}
 	}
 
 	private void chooseSong() {
@@ -113,7 +113,7 @@ public class Status extends ListActivity implements OnClickListener{
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("audio/*");
 		startActivityForResult(Intent.createChooser(intent, getResources().getText(R.string.select_song_intent)), HGDROID_GETSONG);
-	}     
+	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);

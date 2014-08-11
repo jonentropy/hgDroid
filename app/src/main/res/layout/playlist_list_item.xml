@@ -1,94 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:baselineAligned="false"
-    android:padding="5dip">
+    android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/song_item_albumart"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        tools:src="@drawable/ic_launcher" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/LinearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:baselineAligned="true">
-
-                <ImageView
-                    android:id="@+id/song_item_albumart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:paddingRight="15dip"
-                    tools:src="@drawable/ic_launcher" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LinearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/song_item_artist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    tools:text="Artist" />
-
-                <TextView
-                    android:id="@+id/song_item_song"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    tools:text="Song" />
-
-                <TextView
-                    android:id="@+id/song_item_album"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    tools:text="Album" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/song_item_song"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/song_item_albumart"
+        android:textSize="13sp"
+        tools:text="Song" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/song_item_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/song_item_albumart"
+        android:layout_toEndOf="@id/song_item_albumart"
+        android:paddingTop="5dp"
+        android:textSize="13sp"
+        tools:text="Artist" />
 
-            <TextView
-                android:id="@+id/song_item_username"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:textSize="12sp"
-                tools:text="user" />
+    <TextView
+        android:id="@+id/song_item_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/song_item_albumart"
+        android:layout_toEndOf="@id/song_item_albumart"
+        android:paddingBottom="5dp"
+        android:textSize="13sp"
+        tools:text="Album" />
 
-            <ImageView
-                android:id="@+id/song_item_user"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:contentDescription="@string/user_image_description"
-                android:src="@drawable/user" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <TextView
+        android:id="@+id/song_item_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/song_item_user"
+        android:textSize="12sp"
+        tools:text="user" />
+
+    <ImageView
+        android:id="@+id/song_item_user"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/user_image_description"
+        android:src="@drawable/user" />
+</RelativeLayout>
