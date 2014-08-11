@@ -12,13 +12,13 @@ import android.util.Log;
 
 /**
  * hgDroid - An Android client for the Hackathon Gunther Daemon
+ * <p/>
+ * Copyright 2014 Tristan Linnell
+ * <p/>
+ * HgdNowPlayingService.java - Service to maintain connection to server
+ * and pull now playing over the connection, and publish notifications.
  *
- *  Copyright 2014 Tristan Linnell
- *
- *  HgdNowPlayingService.java - Service to maintain connection to server
- *  and pull now playing over the connection, and publish notifications.
  * @author tristan
- *
  */
 public class HgdNowPlayingService extends Service {
     private final static String TAG = "HgdNowPlayingService";
@@ -86,8 +86,8 @@ public class HgdNowPlayingService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent != null && intent.getExtras() != null){
-            if(intent.getExtras().getBoolean(HgdNowPlayingService.EXTRA_STOP_SERVICE)) stopSelf();
+        if (intent != null && intent.getExtras() != null) {
+            if (intent.getExtras().getBoolean(HgdNowPlayingService.EXTRA_STOP_SERVICE)) stopSelf();
         }
 
         return Service.START_STICKY;
@@ -126,7 +126,7 @@ public class HgdNowPlayingService extends Service {
 
             int i = 1;
 
-            while(threadRunning){
+            while (threadRunning) {
                 //TODO this Service should startForeground when information starts coming in from
                 //the server. It should stopSelf when the server has been idle? or errors have
                 //occurred.
@@ -135,7 +135,8 @@ public class HgdNowPlayingService extends Service {
                 try {
                     nowPlayingBuilder.setContentText("Track  " + i);
 
-                    if(foreground) mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
+                    if (foreground)
+                        mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
 
                     Thread.sleep(5000);
 

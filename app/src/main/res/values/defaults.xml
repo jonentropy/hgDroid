@@ -5,4 +5,5 @@
     <string name="default_username"></string>
     <string name="default_password"></string>
     <bool name="default_ssl">false</bool>
+    <bool name="default_first_run">true </bool>
 </resources>
