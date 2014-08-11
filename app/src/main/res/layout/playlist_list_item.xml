@@ -43,6 +43,15 @@
         android:textSize="13sp"
         tools:text="Album" />
 
+    <ImageView
+        android:id="@+id/song_item_user"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/user_image_description"
+        android:src="@drawable/user" />
+
     <TextView
         android:id="@+id/song_item_username"
         android:layout_width="wrap_content"
@@ -52,12 +61,4 @@
         android:textSize="12sp"
         tools:text="user" />
 
-    <ImageView
-        android:id="@+id/song_item_user"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/user_image_description"
-        android:src="@drawable/user" />
 </RelativeLayout>
