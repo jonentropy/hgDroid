@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import org.canthack.tris.android.media.SoundEffects;
+import org.canthack.tris.android.org.canthack.tris.android.hgdroid.mockdata.MockPlaylist;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -44,6 +45,7 @@ public class Status extends ListActivity implements OnClickListener {
         public void onServiceDisconnected(ComponentName className) {
         }
     };
+    private PlaylistAdapter playlistAdapter;
 
     /**
      * Called when the activity is first created.
@@ -58,6 +60,10 @@ public class Status extends ListActivity implements OnClickListener {
         crapButton.setOnClickListener(this);
 
         //TODO add other buttons and views here...
+        playlistAdapter = new PlaylistAdapter(this);
+        setListAdapter(playlistAdapter);
+
+        playlistAdapter.updatePlaylist(MockPlaylist.getPlaylist());
     }
 
     @Override

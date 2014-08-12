@@ -16,7 +16,7 @@
         android:text="@string/crap_song" />
 
     <TextView
-        android:id="@+id/tvNoSongs"
+        android:id="@android:id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
