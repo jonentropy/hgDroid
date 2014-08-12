@@ -14,6 +14,12 @@ public class HgdSong {
     private String userName;
 
     private boolean voted;
+    private String albumArtUrl;
+
+    public HgdSong(){
+        //TODO real URL.
+        albumArtUrl = "http://catsnco.files.wordpress.com/2014/01/shuttersparks.jpg?w=940&h=972";
+    }
 
     public String getTrackName() {
         return trackName;
@@ -67,5 +73,9 @@ public class HgdSong {
     public HgdSong setId(int id) {
         this.id = id;
         return this;
+    }
+
+    public String getAlbumArtUrl() {
+        return albumArtUrl;
     }
 }

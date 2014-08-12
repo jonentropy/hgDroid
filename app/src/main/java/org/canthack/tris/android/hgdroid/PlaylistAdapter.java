@@ -1,12 +1,15 @@
 package org.canthack.tris.android.hgdroid;
 
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,10 +20,12 @@ import java.util.List;
 public class PlaylistAdapter extends BaseAdapter {
     private final Context context;
     private List<HgdSong> songs = Collections.emptyList();
+    private final int imageWidth, imageHeight;
 
     public PlaylistAdapter(Context ctx) {
         super();
         this.context = ctx;
+        this.imageHeight = this.imageWidth =  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ctx.getResources().getDimension(R.dimen.playlist_image_size), ctx.getResources().getDisplayMetrics());
     }
 
     public void updatePlaylist(List<HgdSong> newPlaylist) {
@@ -63,7 +68,14 @@ public class PlaylistAdapter extends BaseAdapter {
         userText.setText(theSong.getUserName());
 
         //TODO album art
-        albumArt.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher));
+        //albumArt.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher));
+
+        Picasso.with(context.getApplicationContext()).load(theSong.getAlbumArtUrl())
+                .placeholder(R.drawable.ic_launcher)
+                .error(R.drawable.ic_launcher)
+                .resize(imageWidth, imageHeight)
+                .centerCrop()
+                .into(albumArt);
 
         return convertView;
     }
