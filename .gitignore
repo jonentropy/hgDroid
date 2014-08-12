@@ -25,4 +25,8 @@ build/
 *.bin
 .gradle/
 
+*.DS_Store
+
 .idea/dictionaries/
+.idea/tasks.xml
+.idea/workspace.xml
