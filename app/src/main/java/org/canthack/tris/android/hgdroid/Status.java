@@ -107,6 +107,7 @@ public class Status extends ListActivity implements OnClickListener {
             case R.id.mitmDisconnect:
                 //stop service first...
                 stopService(new Intent(Status.this, HgdNowPlayingService.class));
+                finish();
                 break;
             case R.id.mitmQueue:
                 chooseSong();

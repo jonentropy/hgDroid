@@ -8,7 +8,7 @@
     <string name="server_desc">IP address or hostname of hgd server</string>
     <string name="port_string">Port</string>
     <string name="port_desc">Port to use on the hgd server</string>
-    <string name="disconnect_label">Disconnect</string>
+    <string name="disconnect_label">Quit</string>
     <string name="disconnect_shortcut">q</string>
     <string name="enable_ssl">Enable SSL</string>
     <string name="ssl_desc">Secures server communications with SSL</string>
