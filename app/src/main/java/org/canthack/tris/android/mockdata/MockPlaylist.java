@@ -1,4 +1,4 @@
-package org.canthack.tris.android.org.canthack.tris.android.hgdroid.mockdata;
+package org.canthack.tris.android.mockdata;
 
 import org.canthack.tris.android.hgdroid.HgdSong;
 

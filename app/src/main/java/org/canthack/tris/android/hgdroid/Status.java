@@ -20,7 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import org.canthack.tris.android.media.SoundEffects;
-import org.canthack.tris.android.org.canthack.tris.android.hgdroid.mockdata.MockPlaylist;
+import org.canthack.tris.android.mockdata.MockPlaylist;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
