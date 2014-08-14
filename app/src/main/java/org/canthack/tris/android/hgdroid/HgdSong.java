@@ -1,5 +1,8 @@
 package org.canthack.tris.android.hgdroid;
 
+import org.canthack.tris.android.lastfm.AlbumArt;
+import org.canthack.tris.android.lastfm.AlbumArtSize;
+
 /**
  * Class to represent a song in the HGD playlist.
  * Created by tristan on 12/08/2014.
@@ -18,7 +21,7 @@ public class HgdSong {
 
     public HgdSong(){
         //TODO real URL.
-        albumArtUrl = "http://catsnco.files.wordpress.com/2014/01/shuttersparks.jpg?w=940&h=972";
+        albumArtUrl = null;
     }
 
     public String getTrackName() {
@@ -36,6 +39,9 @@ public class HgdSong {
 
     public HgdSong setAlbumName(String albumName) {
         this.albumName = albumName;
+        //TEMp
+        //TODO
+        this.albumArtUrl = AlbumArt.getArtworkUrl(artistName, albumName, AlbumArtSize.large);
         return this;
     }
 

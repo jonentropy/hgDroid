@@ -131,7 +131,6 @@ public class HgdNowPlayingService extends Service {
                 //the server. It should stopSelf when the server has been idle? or errors have
                 //occurred.
 
-                Log.d(TAG, "Track " + i);
                 try {
                     nowPlayingBuilder.setContentText("Track  " + i);
 

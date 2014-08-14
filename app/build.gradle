@@ -28,4 +28,5 @@ repositories {
 
 dependencies {
     compile group: 'com.squareup.picasso', name: 'picasso', version: '2.3.3'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.2.4'
 }

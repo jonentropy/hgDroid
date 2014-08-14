@@ -19,13 +19,17 @@ import java.util.List;
  */
 public class PlaylistAdapter extends BaseAdapter {
     private final Context context;
-    private List<HgdSong> songs = Collections.emptyList();
     private final int imageWidth, imageHeight;
+    private List<HgdSong> songs = Collections.emptyList();
 
     public PlaylistAdapter(Context ctx) {
         super();
         this.context = ctx;
-        this.imageHeight = this.imageWidth =  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ctx.getResources().getDimension(R.dimen.playlist_image_size), ctx.getResources().getDisplayMetrics());
+
+        //TODO debug only
+        Picasso.with(ctx.getApplicationContext()).setIndicatorsEnabled(true);
+
+        this.imageHeight = this.imageWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ctx.getResources().getDimension(R.dimen.playlist_image_size), ctx.getResources().getDisplayMetrics());
     }
 
     public void updatePlaylist(List<HgdSong> newPlaylist) {
@@ -70,7 +74,9 @@ public class PlaylistAdapter extends BaseAdapter {
         //TODO album art
         //albumArt.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher));
 
-        Picasso.with(context.getApplicationContext()).load(theSong.getAlbumArtUrl())
+        String artworkUrl = theSong.getAlbumArtUrl();
+
+        Picasso.with(context.getApplicationContext()).load(artworkUrl)
                 .placeholder(R.drawable.ic_launcher)
                 .error(R.drawable.ic_launcher)
                 .resize(imageWidth, imageHeight)
