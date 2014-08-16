@@ -146,7 +146,7 @@ public class Status extends ListActivity implements OnClickListener {
 
     private void chooseSong() {
         // Browse for and return the filename of a track from the phone memory/SD card
-        Log.d(TAG, "Selecting song...");
+        if (BuildConfig.DEBUG) Log.d(TAG, "Selecting song...");
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
         startActivityForResult(Intent.createChooser(intent, getResources().getText(R.string.select_song_intent)), HGDROID_GETSONG);
@@ -160,7 +160,7 @@ public class Status extends ListActivity implements OnClickListener {
         if (requestCode == HGDROID_GETSONG) {
             //Select song callback...
             Uri songURI = data.getData();
-            Log.d(TAG, "Song selected: " + songURI.toString());
+            if (BuildConfig.DEBUG) Log.d(TAG, "Song selected: " + songURI.toString());
 
             try {
                 InputStream is = getContentResolver().openInputStream(songURI);

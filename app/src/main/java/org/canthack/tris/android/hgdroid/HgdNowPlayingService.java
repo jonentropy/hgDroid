@@ -115,7 +115,7 @@ public class HgdNowPlayingService extends Service {
 
     @Override
     public void onDestroy() {
-        Log.d(TAG, "onDestroy");
+        if (BuildConfig.DEBUG) Log.d(TAG, "onDestroy");
         threadRunning = false;
         super.onDestroy();
     }

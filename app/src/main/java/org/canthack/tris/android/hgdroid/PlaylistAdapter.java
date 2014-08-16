@@ -26,8 +26,10 @@ public class PlaylistAdapter extends BaseAdapter {
         super();
         this.context = ctx;
 
-        //TODO debug only
-        Picasso.with(ctx.getApplicationContext()).setIndicatorsEnabled(true);
+        if (BuildConfig.DEBUG) {
+            Picasso.with(ctx.getApplicationContext()).setIndicatorsEnabled(true);
+            Picasso.with(ctx.getApplicationContext()).setLoggingEnabled(true);
+        }
 
         this.imageHeight = this.imageWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ctx.getResources().getDimension(R.dimen.playlist_image_size), ctx.getResources().getDisplayMetrics());
     }

@@ -4,15 +4,19 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import org.canthack.tris.android.hgdroid.CustomHttpClient;
+import org.canthack.tris.android.hgdroid.BuildConfig;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -47,16 +51,16 @@ public final class AlbumArt {
 
         String cachedUrl = cachedUrls.get(cachedName);
         if (cachedUrl != null) {
-            Log.d(TAG, "Url cached for " + cachedName);
+            if (BuildConfig.DEBUG) Log.d(TAG, "Url cached for " + cachedName);
             return cachedUrl;
         }
 
-        Log.d(TAG, "Url NOT cached for " + cachedName);
+        if (BuildConfig.DEBUG) Log.d(TAG, "Url NOT cached for " + cachedName);
 
-        String url;
+        String urlString;
 
         try {
-            url = new StringBuilder(256)
+            urlString = new StringBuilder(256)
                     .append(API_ROOT)
                     .append(API_METHOD)
                     .append(LAST_FM_API_KEY)
@@ -72,9 +76,16 @@ public final class AlbumArt {
             return null;
         }
 
-        InputStream in = CustomHttpClient.retrieveStream(url);
+        HttpURLConnection urlConnection = null;
 
         try {
+            URL url = new URL(urlString);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(10000);
+
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
             BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, UTF8));
 
             JsonObject responseObject = gson.fromJson(streamReader, JsonObject.class);
@@ -86,20 +97,19 @@ public final class AlbumArt {
             JsonArray imagesArray = albumObject.getAsJsonArray(IMAGE);
             if (imagesArray == null) return null;
 
-            for (int i = 0; i < imagesArray.size(); i++) {
-                if (imagesArray.get(i).getAsJsonObject().get(SIZE).getAsString().equalsIgnoreCase(size.name())) {
-                    String foundUrl = imagesArray.get(i).getAsJsonObject().get(TEXT).getAsString();
+            for (JsonElement element : imagesArray) {
+                if (element.getAsJsonObject().get(SIZE).getAsString().equalsIgnoreCase(size.name())) {
+                    String foundUrl = element.getAsJsonObject().get(TEXT).getAsString();
                     cachedUrls.put(cachedName, foundUrl);
                     return foundUrl;
                 }
             }
+
         } catch (IOException e) {
             Log.e(TAG, "Error getting artwork URL!", e);
         } finally {
-            if (in != null) try {
-                in.close();
-            } catch (IOException e) {
-                Log.e(TAG, "Error closing stream!", e);
+            if (urlConnection != null) {
+                urlConnection.disconnect();
             }
         }
 
