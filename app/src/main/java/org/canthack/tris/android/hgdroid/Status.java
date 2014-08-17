@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.canthack.tris.android.media.SoundEffects;
@@ -123,6 +124,9 @@ public class Status extends ListActivity implements OnClickListener {
             case R.id.mitmQueue:
                 chooseSong();
                 return true;
+            case R.id.mitmAbout:
+                showAbout();
+                return true;
             //TODO: add more menu items here...
 
         }
@@ -176,5 +180,20 @@ public class Status extends ListActivity implements OnClickListener {
         }
         //ToDo: other callbacks go here
 
+    }
+
+    protected void showAbout() {
+        View messageView = getLayoutInflater().inflate(R.layout.about, null, false);
+
+        TextView textView = (TextView) messageView.findViewById(R.id.about_credits);
+        int defaultColor = textView.getTextColors().getDefaultColor();
+        textView.setTextColor(defaultColor);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.ic_launcher);
+        builder.setTitle(R.string.app_name);
+        builder.setView(messageView);
+        builder.create();
+        builder.show();
     }
 }
