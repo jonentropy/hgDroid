@@ -93,7 +93,6 @@ public class Status extends ListActivity implements OnClickListener {
             new AlertDialog.Builder(this).setTitle(R.string.app_name).setMessage(getString(R.string.first_run_message)).setPositiveButton(getString(R.string.go_to_settings), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Settings.setFirstRun(Status.this, false);
                     startActivity(new Intent(Status.this, Settings.class));
                 }
             }).show();

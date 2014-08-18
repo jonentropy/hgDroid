@@ -32,4 +32,11 @@
     <string name="about_label">About</string>
     <string name="about_shortcut">a</string>
     <string name="app_url">hgd.theunixzoo.co.uk</string>
+    <string name="save_settings_message">Save these settings? This will overwrite previous values for Server and Port!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save_settings_message_first_run">Save these settings?</string>
+    <string name="hgd_uri_scheme">hgd</string>
+    <string name="scan_barcode">Scan HGD Barcode</string>
+    <string name="scan_shortcut">s</string>
 </resources>

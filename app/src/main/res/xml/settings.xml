@@ -13,7 +13,7 @@
         android:key="port"
         android:numeric="integer"
         android:summary="@string/port_desc"
-        android:title="@string/port_string">android:numeric="true"
+        android:title="@string/port_string">
     </EditTextPreference>
     <CheckBoxPreference
         android:key="ssl"

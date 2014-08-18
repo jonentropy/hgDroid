@@ -27,7 +27,17 @@
         </activity>
         <activity
             android:name=".Settings"
-            android:label="@string/settings_title" />
+            android:label="@string/settings_title">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="hgd" />
+            </intent-filter>
+        </activity>
 
         <!-- Services -->
         <service
