@@ -7,6 +7,7 @@
 package org.canthack.tris.android.hgdroid;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -155,7 +156,12 @@ public class Settings extends PreferenceActivity {
     private void scanBarcode() {
         Intent intent = new Intent("com.google.zxing.client.android.SCAN");
         intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
-        startActivityForResult(intent, SCAN_REQUEST_CODE);
+        try {
+            startActivityForResult(intent, SCAN_REQUEST_CODE);
+        } catch (ActivityNotFoundException e) {
+            //Get a barcode reader
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=com.google.zxing.client.android")));
+        }
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
