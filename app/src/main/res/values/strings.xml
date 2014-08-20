@@ -39,4 +39,5 @@
     <string name="hgd_uri_scheme">hgd</string>
     <string name="scan_barcode">Scan HGD Barcode</string>
     <string name="scan_shortcut">s</string>
+    <string name="settings_saved_toast">Settings saved</string>
 </resources>

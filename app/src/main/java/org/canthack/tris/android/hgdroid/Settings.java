@@ -18,6 +18,7 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Settings extends PreferenceActivity {
     private static final int SCAN_REQUEST_CODE = 0;
@@ -124,6 +125,9 @@ public class Settings extends PreferenceActivity {
                     setPreferenceScreen(null);
                     addPreferencesFromResource(R.xml.settings);
                 }
+
+                Toast.makeText(Settings.this, getString(R.string.settings_saved_toast), Toast.LENGTH_SHORT).show();
+
             }
         }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
             @Override
