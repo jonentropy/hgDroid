@@ -1,5 +1,8 @@
 package org.canthack.tris.android.hgdroid;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.canthack.tris.android.lastfm.AlbumArt;
 import org.canthack.tris.android.lastfm.AlbumArtSize;
 
@@ -7,7 +10,7 @@ import org.canthack.tris.android.lastfm.AlbumArtSize;
  * Class to represent a song in the HGD playlist.
  * Created by tristan on 12/08/2014.
  */
-public class HgdSong {
+public class HgdSong implements Parcelable {
     private int id;
 
     private String trackName;
@@ -19,10 +22,17 @@ public class HgdSong {
     private boolean voted;
     private String albumArtUrl;
 
-    public HgdSong(){
-        //TODO real URL.
-        albumArtUrl = null;
+    public HgdSong(Parcel in){
+        this.id = in.readInt();
+        this.trackName = in.readString();
+        this.albumName = in.readString();
+        this.artistName = in.readString();
+        this.userName = in.readString();
+        this.voted = in.readByte() == 1;
+        this.albumArtUrl = in.readString();
     }
+
+    public HgdSong(){}
 
     public String getTrackName() {
         return trackName;
@@ -39,9 +49,6 @@ public class HgdSong {
 
     public HgdSong setAlbumName(String albumName) {
         this.albumName = albumName;
-        //TEMp
-        //TODO
-        this.albumArtUrl = AlbumArt.getArtworkUrl(artistName, albumName, AlbumArtSize.large);
         return this;
     }
 
@@ -83,5 +90,41 @@ public class HgdSong {
 
     public String getAlbumArtUrl() {
         return albumArtUrl;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(trackName);
+        parcel.writeString(albumName);
+        parcel.writeString(artistName);
+        parcel.writeString(userName);
+        parcel.writeByte((byte) (voted ? 1 : 0));
+        parcel.writeString(albumArtUrl);
+    }
+
+    public static final Parcelable.Creator<HgdSong> CREATOR = new Parcelable.Creator<HgdSong>() {
+        public HgdSong createFromParcel(Parcel in) {
+            return new HgdSong(in);
+        }
+
+        public HgdSong[] newArray(int size) {
+            return new HgdSong[size];
+        }
+    };
+
+    /**
+     * Fetch album art Url from network. Do not call from
+     * the UI Thread!
+     * @return
+     */
+    public HgdSong autoSetAlbumArtUrl() {
+        this.albumArtUrl = AlbumArt.getArtworkUrl(this.artistName, this.albumName, AlbumArtSize.large);
+        return this;
     }
 }

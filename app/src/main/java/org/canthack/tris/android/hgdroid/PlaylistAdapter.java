@@ -73,9 +73,6 @@ public class PlaylistAdapter extends BaseAdapter {
         artistText.setText(theSong.getArtistName());
         userText.setText(theSong.getUserName());
 
-        //TODO album art
-        //albumArt.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher));
-
         String artworkUrl = theSong.getAlbumArtUrl();
 
         Picasso.with(context.getApplicationContext()).load(artworkUrl)

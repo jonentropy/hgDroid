@@ -10,6 +10,10 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import org.canthack.tris.android.mockdata.MockPlaylist;
+
+import java.util.ArrayList;
+
 /**
  * hgDroid - An Android client for the Hackathon Gunther Daemon
  * <p/>
@@ -21,9 +25,10 @@ import android.util.Log;
  * @author tristan
  */
 public class HgdNowPlayingService extends Service {
+    public static final String PLAYLIST_EXTRA = "playlistContents";
+    public static final String PLAYLIST_INTENT = "playlist";
     private final static String TAG = "HgdNowPlayingService";
     private final static String EXTRA_STOP_SERVICE = "stop";
-
     private volatile boolean threadRunning;
     private volatile boolean foreground;
     private NotificationManager mNotificationManager;
@@ -124,6 +129,12 @@ public class HgdNowPlayingService extends Service {
         public void run() {
             Log.d(TAG, "Thread starting");
 
+            //TODO only for example...
+            ArrayList<HgdSong> playlist = MockPlaylist.getPlaylist();
+            Intent playlistIntent = new Intent(PLAYLIST_INTENT);
+            playlistIntent.putParcelableArrayListExtra(PLAYLIST_EXTRA, playlist);
+            sendStickyBroadcast(playlistIntent);
+
             int i = 1;
 
             while (threadRunning) {
@@ -134,8 +145,9 @@ public class HgdNowPlayingService extends Service {
                 try {
                     nowPlayingBuilder.setContentText("Track  " + i);
 
-                    if (foreground)
+                    if (foreground) {
                         mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
+                    }
 
                     Thread.sleep(5000);
 

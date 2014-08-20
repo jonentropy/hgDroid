@@ -2,10 +2,12 @@ package org.canthack.tris.android.hgdroid;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,10 +24,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.canthack.tris.android.media.SoundEffects;
-import org.canthack.tris.android.mockdata.MockPlaylist;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * hgDroid - An Android client for the Hackathon Gunther Daemon
@@ -39,6 +41,8 @@ import java.io.InputStream;
 public class Status extends ListActivity implements OnClickListener {
     private static final String TAG = "STATUS";
     private static final int HGDROID_GETSONG = 1;
+
+    private BroadcastReceiver playlistReceiver;
 
     private ServiceConnection nowPlayingConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder binder) {
@@ -57,10 +61,6 @@ public class Status extends ListActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //DEBUG Only!
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
         //Set all button's event handlers to the Activity itself...
         View crapButton = this.findViewById(R.id.btnCrapSong);
         crapButton.setOnClickListener(this);
@@ -69,7 +69,7 @@ public class Status extends ListActivity implements OnClickListener {
         playlistAdapter = new PlaylistAdapter(this);
         setListAdapter(playlistAdapter);
 
-        playlistAdapter.updatePlaylist(MockPlaylist.getPlaylist());
+        playlistReceiver = getPlaylistReceiver();
     }
 
     @Override
@@ -87,6 +87,12 @@ public class Status extends ListActivity implements OnClickListener {
     }
 
     @Override
+    public void onPause(){
+        super.onPause();
+        unregisterReceiver(playlistReceiver);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         if (Settings.getFirstRun(this)) {
@@ -97,6 +103,7 @@ public class Status extends ListActivity implements OnClickListener {
                 }
             }).show();
         }
+        registerReceiver(playlistReceiver, new IntentFilter(HgdNowPlayingService.PLAYLIST_INTENT));
     }
 
     //Creates menus
@@ -179,6 +186,16 @@ public class Status extends ListActivity implements OnClickListener {
         }
         //ToDo: other callbacks go here
 
+    }
+
+    private BroadcastReceiver getPlaylistReceiver() {
+        return new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                ArrayList<HgdSong> newPlaylist = intent.getParcelableArrayListExtra(HgdNowPlayingService.PLAYLIST_EXTRA);
+                playlistAdapter.updatePlaylist(newPlaylist);
+            }
+        };
     }
 
     protected void showAbout() {
