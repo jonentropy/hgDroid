@@ -12,7 +12,6 @@ import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -87,7 +86,7 @@ public class Status extends ListActivity implements OnClickListener {
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         unregisterReceiver(playlistReceiver);
     }
@@ -164,8 +163,7 @@ public class Status extends ListActivity implements OnClickListener {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_CANCELED)
-            return;
+        if (resultCode == RESULT_CANCELED) return;
 
         if (requestCode == HGDROID_GETSONG) {
             //Select song callback...
