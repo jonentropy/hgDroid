@@ -28,7 +28,7 @@
     <string name="go_to_settings">Go to settings</string>
     <string name="error_opening_song">Could not open song</string>
     <string name="no_songs">No songs</string>
-    <string name="app_credits">Credits\n\nUses the awesome Picasso library for image download and caching.\nsquare.github.io/picasso\n\nUses Google GSON for JSON parsing.\ncode.google.com/p/google-gson</string>
+    <string name="app_credits">Credits\n\nIcon by theartofindigo.com\n\nUses the awesome Picasso library for image download and caching.\nsquare.github.io/picasso\n\nUses Google GSON for JSON parsing.\ncode.google.com/p/google-gson</string>
     <string name="about_label">About</string>
     <string name="about_shortcut">a</string>
     <string name="app_url">hgd.theunixzoo.co.uk</string>

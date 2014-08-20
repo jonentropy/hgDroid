@@ -7,6 +7,7 @@
 package org.canthack.tris.android.hgdroid;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,6 +34,8 @@ public class Settings extends PreferenceActivity {
     private static final String HGD_SETTING_PASSWORD = "pwd";
     private static final String HGD_SETTING_SSL = "ssl";
     private static final String HGD_SETTING_FIRST_RUN = "first_run";
+
+    private Dialog confirmDialog;
 
     //Settings
     public static String getServerAddress(Context context) {
@@ -88,6 +91,12 @@ public class Settings extends PreferenceActivity {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        if (confirmDialog != null) confirmDialog.dismiss();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         handleIntent(getIntent());
@@ -110,7 +119,7 @@ public class Settings extends PreferenceActivity {
     private void promptToAndSaveSettings(final Uri uri, final boolean finish) {
         String message = Settings.getFirstRun(this) ? getString(R.string.save_settings_message_first_run) : getString(R.string.save_settings_message);
 
-        new AlertDialog.Builder(this).setTitle(R.string.app_name).setMessage(message).setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+        confirmDialog = new AlertDialog.Builder(this).setTitle(R.string.app_name).setMessage(message).setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Settings.setFirstRun(Settings.this, false);
@@ -134,7 +143,9 @@ public class Settings extends PreferenceActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (finish) Settings.this.finish();
             }
-        }).show();
+        }).create();
+
+        confirmDialog.show();
     }
 
     //Creates menus

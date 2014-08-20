@@ -1,6 +1,7 @@
 package org.canthack.tris.android.hgdroid;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -42,6 +43,8 @@ public class Status extends ListActivity implements OnClickListener {
     private static final int HGDROID_GETSONG = 1;
 
     private BroadcastReceiver playlistReceiver;
+
+    private Dialog aboutDialog;
 
     private ServiceConnection nowPlayingConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder binder) {
@@ -89,6 +92,7 @@ public class Status extends ListActivity implements OnClickListener {
     public void onPause() {
         super.onPause();
         unregisterReceiver(playlistReceiver);
+        if (aboutDialog != null) aboutDialog.dismiss();
     }
 
     @Override
@@ -208,6 +212,7 @@ public class Status extends ListActivity implements OnClickListener {
         builder.setTitle(R.string.app_name);
         builder.setView(messageView);
         builder.create();
-        builder.show();
+        aboutDialog = builder.create();
+        aboutDialog.show();
     }
 }
