@@ -19,9 +19,10 @@ import java.util.List;
  * Created by tristan on 12/08/2014.
  */
 public class PlaylistAdapter extends BaseAdapter {
-    private static final int NOW_PLAYING_COLOR = Color.argb(20, 255, 255, 255);
+    private final int NOW_PLAYING_COLOR;
     private final Context context;
-    private final int imageWidth, imageHeight;
+    private final int imageWidth, imageHeight; //pixels
+    private final float imageDimensionWidth, imageDimensionHeight; //DP
     private List<HgdSong> songs = Collections.emptyList();
 
     public PlaylistAdapter(Context ctx) {
@@ -33,7 +34,9 @@ public class PlaylistAdapter extends BaseAdapter {
             Picasso.with(ctx.getApplicationContext()).setLoggingEnabled(true);
         }
 
+        this.NOW_PLAYING_COLOR = ctx.getResources().getColor(R.color.now_playing_highlight);
         this.imageHeight = this.imageWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ctx.getResources().getDimension(R.dimen.playlist_image_size), ctx.getResources().getDisplayMetrics());
+        this.imageDimensionHeight = this.imageDimensionWidth = context.getResources().getDimension(R.dimen.playlist_image_size);
     }
 
     public void updatePlaylist(List<HgdSong> newPlaylist) {
@@ -66,7 +69,8 @@ public class PlaylistAdapter extends BaseAdapter {
 
         ImageView albumArt = ViewHolder.get(convertView, R.id.song_item_albumart);
         ViewGroup.LayoutParams imageParams = albumArt.getLayoutParams();
-        imageParams.height = imageParams.width = i == 0 ? (int) context.getResources().getDimension(R.dimen.playlist_image_size) * 2 : (int) context.getResources().getDimension(R.dimen.playlist_image_size);
+        imageParams.height = i == 0 ? (int) imageDimensionHeight * 2 : (int) imageDimensionHeight;
+        imageParams.width = i == 0 ? (int) imageDimensionWidth * 2 : (int) imageDimensionWidth;
 
         TextView songText = ViewHolder.get(convertView, R.id.song_item_song);
         TextView albumText = ViewHolder.get(convertView, R.id.song_item_album);
