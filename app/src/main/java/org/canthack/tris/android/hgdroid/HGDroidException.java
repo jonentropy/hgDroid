@@ -8,9 +8,9 @@ package org.canthack.tris.android.hgdroid;
 
 public class HGDroidException extends Exception {
 
-	public HGDroidException(String string) {
-		super(string);
-	}
+    private static final long serialVersionUID = -4151506917585115389L;
 
-	private static final long serialVersionUID = -4151506917585115389L;
+    public HGDroidException(String string) {
+        super(string);
+    }
 }

@@ -13,7 +13,7 @@ public class MockPlaylist {
     public static ArrayList<HgdSong> getPlaylist() {
         ArrayList<HgdSong> list = new ArrayList<HgdSong>(128);
 
-        list.add(new HgdSong().setArtistName("Miigy Mouse").setAlbumName("Noo I gooo").setTrackName("Yarp").setUserName("miig").autoSetAlbumArtUrl());
+      //  list.add(new HgdSong().setArtistName("Miigy Mouse").setAlbumName("Noo I gooo").setTrackName("Yarp").setUserName("miig").autoSetAlbumArtUrl());
 
         list.add(new HgdSong().setArtistName("Metallica").setAlbumName("Ride the Lightning").setTrackName("Creeping Death").setUserName("tris").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("Yes").setAlbumName("Fragile").setTrackName("10 Minute Prog").setUserName("sav").autoSetAlbumArtUrl());

@@ -1,6 +1,7 @@
 package org.canthack.tris.android.hgdroid;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.List;
  * Created by tristan on 12/08/2014.
  */
 public class PlaylistAdapter extends BaseAdapter {
+    private static final int NOW_PLAYING_COLOR = Color.argb(20, 255, 255, 255);
     private final Context context;
     private final int imageWidth, imageHeight;
     private List<HgdSong> songs = Collections.emptyList();
@@ -51,7 +53,7 @@ public class PlaylistAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return i;
+        return songs.get(i).getId();
     }
 
     @Override
@@ -60,7 +62,12 @@ public class PlaylistAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.playlist_list_item, parent, false);
         }
 
+        convertView.setBackgroundColor(i == 0 ? NOW_PLAYING_COLOR : Color.TRANSPARENT);
+
         ImageView albumArt = ViewHolder.get(convertView, R.id.song_item_albumart);
+        ViewGroup.LayoutParams imageParams = albumArt.getLayoutParams();
+        imageParams.height = imageParams.width = i == 0 ? (int) context.getResources().getDimension(R.dimen.playlist_image_size) * 2 : (int) context.getResources().getDimension(R.dimen.playlist_image_size);
+
         TextView songText = ViewHolder.get(convertView, R.id.song_item_song);
         TextView albumText = ViewHolder.get(convertView, R.id.song_item_album);
         TextView artistText = ViewHolder.get(convertView, R.id.song_item_artist);
@@ -78,7 +85,7 @@ public class PlaylistAdapter extends BaseAdapter {
         Picasso.with(context.getApplicationContext()).load(artworkUrl)
                 .placeholder(R.drawable.ic_launcher)
                 .error(R.drawable.ic_launcher)
-                .resize(imageWidth, imageHeight)
+                .resize(i == 0 ? imageWidth * 2 : imageWidth, i == 0 ? imageHeight * 2 : imageHeight)
                 .centerCrop()
                 .into(albumArt);
 

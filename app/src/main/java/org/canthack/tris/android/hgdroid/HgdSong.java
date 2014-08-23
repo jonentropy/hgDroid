@@ -11,18 +11,24 @@ import org.canthack.tris.android.lastfm.AlbumArtSize;
  * Created by tristan on 12/08/2014.
  */
 public class HgdSong implements Parcelable {
-    private int id;
+    public static final Parcelable.Creator<HgdSong> CREATOR = new Parcelable.Creator<HgdSong>() {
+        public HgdSong createFromParcel(Parcel in) {
+            return new HgdSong(in);
+        }
 
+        public HgdSong[] newArray(int size) {
+            return new HgdSong[size];
+        }
+    };
+    private int id;
     private String trackName;
     private String albumName;
     private String artistName;
-
     private String userName;
-
     private boolean voted;
     private String albumArtUrl;
 
-    public HgdSong(Parcel in){
+    public HgdSong(Parcel in) {
         this.id = in.readInt();
         this.trackName = in.readString();
         this.albumName = in.readString();
@@ -32,7 +38,8 @@ public class HgdSong implements Parcelable {
         this.albumArtUrl = in.readString();
     }
 
-    public HgdSong(){}
+    public HgdSong() {
+    }
 
     public String getTrackName() {
         return trackName;
@@ -108,19 +115,10 @@ public class HgdSong implements Parcelable {
         parcel.writeString(albumArtUrl);
     }
 
-    public static final Parcelable.Creator<HgdSong> CREATOR = new Parcelable.Creator<HgdSong>() {
-        public HgdSong createFromParcel(Parcel in) {
-            return new HgdSong(in);
-        }
-
-        public HgdSong[] newArray(int size) {
-            return new HgdSong[size];
-        }
-    };
-
     /**
      * Fetch album art Url from network. Do not call from
      * the UI Thread!
+     *
      * @return
      */
     public HgdSong autoSetAlbumArtUrl() {

@@ -23,8 +23,6 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.canthack.tris.android.media.SoundEffects;
-
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -70,6 +68,17 @@ public class Status extends ListActivity implements OnClickListener {
         //TODO add other buttons and views here...
         playlistAdapter = new PlaylistAdapter(this);
         setListAdapter(playlistAdapter);
+
+        View footer = getLayoutInflater().inflate(R.layout.playlist_footer, null);
+        footer.setOnClickListener(this);
+        footer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseSong();
+            }
+        });
+        getListView().setFooterDividersEnabled(true);
+        getListView().addFooterView(footer);
 
         playlistReceiver = getPlaylistReceiver();
     }
@@ -126,9 +135,8 @@ public class Status extends ListActivity implements OnClickListener {
                 startActivity(new Intent(this, Settings.class));
                 return true;
             case R.id.mitmDisconnect:
-                //stop service first...
-                stopService(new Intent(Status.this, HgdNowPlayingService.class));
                 finish();
+                stopService(new Intent(Status.this, HgdNowPlayingService.class));
                 break;
             case R.id.mitmQueue:
                 chooseSong();
@@ -152,7 +160,6 @@ public class Status extends ListActivity implements OnClickListener {
                 t.setGravity(Gravity.BOTTOM, 0, 0);
                 t.show();
 
-                SoundEffects.playEffect(this, R.raw.crapsong);
                 break;
         }
     }
