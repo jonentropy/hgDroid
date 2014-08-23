@@ -31,7 +31,7 @@
     <string name="app_credits">Credits\n\nIcon by theartofindigo.com\n\nUses the awesome Picasso library for image download and caching.\nsquare.github.io/picasso\n\nUses Google GSON for JSON parsing.\ncode.google.com/p/google-gson</string>
     <string name="about_label">About</string>
     <string name="about_shortcut">a</string>
-    <string name="app_url">hgd.theunixzoo.co.uk</string>
+    <string name="app_url" translatable="false">canthack.org</string>
     <string name="save_settings_message">Save these settings? This will overwrite previous values for Server and Port!</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
