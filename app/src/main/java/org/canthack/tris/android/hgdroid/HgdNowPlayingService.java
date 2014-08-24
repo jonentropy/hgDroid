@@ -37,7 +37,7 @@ public class HgdNowPlayingService extends Service {
     private volatile boolean foreground;
     private NotificationManager mNotificationManager;
     private int notificationId = 1;
-    private Notification.Builder nowPlayingBuilder, notConnectedBuilder, currentBuilder;
+    private Notification.Builder nowPlayingBuilder;
 
     @Override
     public void onCreate() {
@@ -53,11 +53,6 @@ public class HgdNowPlayingService extends Service {
     }
 
     private void initNotifications() {
-        notConnectedBuilder =
-                new Notification.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle(getString(R.string.app_name))
-                        .setContentText("Not connected!"); //temp. will not display notification until connected
 
         Intent toStatusIntent = new Intent(this, Status.class);
 
@@ -70,14 +65,9 @@ public class HgdNowPlayingService extends Service {
                         0,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
-        notConnectedBuilder.setContentIntent(toStatusPendingIntent);
 
         Intent intent = new Intent(HgdNowPlayingService.this, HgdNowPlayingService.class);
         intent.putExtra(HgdNowPlayingService.EXTRA_STOP_SERVICE, true);
-
-        PendingIntent stopNowPlayingServicePendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        notConnectedBuilder.addAction(R.drawable.ic_stat_disconnect, getString(R.string.close), stopNowPlayingServicePendingIntent);
 
         nowPlayingBuilder =
                 new Notification.Builder(this)
@@ -89,7 +79,6 @@ public class HgdNowPlayingService extends Service {
         //TODO INTENT FOR VOTE OFF PendingIntent stopNowPlayingServicePendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         nowPlayingBuilder.addAction(R.drawable.ic_stat_vote_off, getString(R.string.crap_song), null); //INTENT HERE
 
-        currentBuilder = nowPlayingBuilder;
     }
 
     @Override
@@ -116,7 +105,7 @@ public class HgdNowPlayingService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        startForeground(notificationId, currentBuilder.build());
+        startForeground(notificationId, nowPlayingBuilder.build());
         foreground = true;
         return true;
     }
