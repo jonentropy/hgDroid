@@ -142,7 +142,7 @@ public class HgdNowPlayingService extends Service {
 
                         Bitmap b;
                         try {
-                            b = Picasso.with(HgdNowPlayingService.this).load(playing.getAlbumArtUrl()).get();
+                            b = Picasso.with(HgdNowPlayingService.this).load(playing.getAlbumArtUrl()).resizeDimen(android.R.dimen.notification_large_icon_width, android.R.dimen.notification_large_icon_height).get();
                             nowPlayingBuilder.setLargeIcon(b);
                         } catch (IOException e) {
                             e.printStackTrace();
