@@ -41,7 +41,7 @@ public class HgdNowPlayingService extends Service {
 
     @Override
     public void onCreate() {
-        Log.d(TAG, "Create");
+        if(BuildConfig.DEBUG) Log.d(TAG, "Create");
         super.onCreate();
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -119,7 +119,7 @@ public class HgdNowPlayingService extends Service {
 
     class HGDClient implements Runnable {
         public void run() {
-            Log.d(TAG, "Thread starting");
+            if(BuildConfig.DEBUG) Log.d(TAG, "Thread starting");
 
             //TODO only for example...
             ArrayList<HgdSong> playlist = MockPlaylist.getPlaylist();
