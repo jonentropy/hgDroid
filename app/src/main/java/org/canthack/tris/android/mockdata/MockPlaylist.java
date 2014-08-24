@@ -15,8 +15,11 @@ public class MockPlaylist {
 
       //  list.add(new HgdSong().setArtistName("Miigy Mouse").setAlbumName("Noo I gooo").setTrackName("Yarp").setUserName("miig").autoSetAlbumArtUrl());
 
-        list.add(new HgdSong().setArtistName("Metallica").setAlbumName("Ride the Lightning").setTrackName("Creeping Death").setUserName("tris").autoSetAlbumArtUrl());
+        list.add(new HgdSong().setArtistName("Metallica").setAlbumName("Ride the Lightning").setTrackName("Creeping Death").setUserName("tris").autoSetAlbumArtUrl().setPlaying(true));
+        list.add(new HgdSong().setArtistName("Slayer").setAlbumName("Reign In Blood").setTrackName("Angel of Death").setUserName("timbo").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("Yes").setAlbumName("Fragile").setTrackName("10 Minute Prog").setUserName("sav").autoSetAlbumArtUrl());
+        list.add(new HgdSong().setArtistName("CKY").setAlbumName("Volume 1").setTrackName("96 Quite Bitter Beings").setUserName("admin").autoSetAlbumArtUrl());
+        list.add(new HgdSong().setArtistName("Linkin Park").setAlbumName("The Hunting Party").setTrackName("Rebellion").setUserName("me").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("Billy Talent").setAlbumName("Dead Silence").setTrackName("Viking Death Match").setUserName("claire").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("Aqua").setAlbumName("Aquarium").setTrackName("Barbie Girl").setUserName("hannah").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("Slipknot").setAlbumName("Vol. 3").setTrackName("Duality").setUserName("tris").autoSetAlbumArtUrl());

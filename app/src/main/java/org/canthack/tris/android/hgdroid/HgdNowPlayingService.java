@@ -7,11 +7,15 @@ import android.app.Service;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.squareup.picasso.Picasso;
+
 import org.canthack.tris.android.mockdata.MockPlaylist;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -78,8 +82,7 @@ public class HgdNowPlayingService extends Service {
         nowPlayingBuilder =
                 new Notification.Builder(this)
                         .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("Track Name")
-                        .setContentText("Artist\nAlbum");
+                        .setContentInfo(getString(R.string.app_name));
 
         nowPlayingBuilder.setContentIntent(toStatusPendingIntent);
 
@@ -142,18 +145,30 @@ public class HgdNowPlayingService extends Service {
                 //the server. It should stopSelf when the server has been idle? or errors have
                 //occurred.
 
-                try {
-                    nowPlayingBuilder.setContentText("Track  " + i);
+                if (i < playlist.size()) {
+                    try {
+                        HgdSong playing = playlist.get(i);
+                        nowPlayingBuilder.setContentTitle(playing.getTrackName());
+                        nowPlayingBuilder.setContentText(playing.getArtistName());
 
-                    if (foreground) {
-                        mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
+                        Bitmap b;
+                        try {
+                            b = Picasso.with(HgdNowPlayingService.this).load(playing.getAlbumArtUrl()).get();
+                            nowPlayingBuilder.setLargeIcon(b);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (foreground) {
+                            mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
+                        }
+
+                        Thread.sleep(5000);
+
+                        i++;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-
-                    Thread.sleep(5000);
-
-                    i++;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
         }

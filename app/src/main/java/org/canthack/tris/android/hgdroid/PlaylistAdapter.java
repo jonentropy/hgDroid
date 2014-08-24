@@ -65,12 +65,14 @@ public class PlaylistAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.playlist_list_item, parent, false);
         }
 
-        convertView.setBackgroundColor(i == 0 ? NOW_PLAYING_COLOR : Color.TRANSPARENT);
+        final boolean playing = getItem(i).isPlaying();
+
+        convertView.setBackgroundColor(playing ? NOW_PLAYING_COLOR : Color.TRANSPARENT);
 
         ImageView albumArt = ViewHolder.get(convertView, R.id.song_item_albumart);
         ViewGroup.LayoutParams imageParams = albumArt.getLayoutParams();
-        imageParams.height = i == 0 ? (int) imageDimensionHeight * 2 : (int) imageDimensionHeight;
-        imageParams.width = i == 0 ? (int) imageDimensionWidth * 2 : (int) imageDimensionWidth;
+        imageParams.height = playing ? (int) imageDimensionHeight * 2 : (int) imageDimensionHeight;
+        imageParams.width = playing ? (int) imageDimensionWidth * 2 : (int) imageDimensionWidth;
 
         TextView songText = ViewHolder.get(convertView, R.id.song_item_song);
         TextView albumText = ViewHolder.get(convertView, R.id.song_item_album);

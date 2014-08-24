@@ -27,6 +27,7 @@ public class HgdSong implements Parcelable {
     private String userName;
     private boolean voted;
     private String albumArtUrl;
+    private boolean playing;
 
     public HgdSong(Parcel in) {
         this.id = in.readInt();
@@ -36,9 +37,19 @@ public class HgdSong implements Parcelable {
         this.userName = in.readString();
         this.voted = in.readByte() == 1;
         this.albumArtUrl = in.readString();
+        this.playing = in.readByte() == 1;
     }
 
     public HgdSong() {
+    }
+
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public HgdSong setPlaying(boolean playing) {
+        this.playing = playing;
+        return this;
     }
 
     public String getTrackName() {
@@ -113,6 +124,7 @@ public class HgdSong implements Parcelable {
         parcel.writeString(userName);
         parcel.writeByte((byte) (voted ? 1 : 0));
         parcel.writeString(albumArtUrl);
+        parcel.writeInt((byte) (playing ? 1 : 0));
     }
 
     /**
@@ -122,7 +134,7 @@ public class HgdSong implements Parcelable {
      * @return
      */
     public HgdSong autoSetAlbumArtUrl() {
-        this.albumArtUrl = AlbumArt.getArtworkUrl(this.artistName, this.albumName, AlbumArtSize.large);
+        this.albumArtUrl = AlbumArt.getArtworkUrl(this.artistName, this.albumName, AlbumArtSize.extralarge);
         return this;
     }
 }
