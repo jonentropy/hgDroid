@@ -41,7 +41,7 @@ public class HgdNowPlayingService extends Service {
 
     @Override
     public void onCreate() {
-        if(BuildConfig.DEBUG) Log.d(TAG, "Create");
+        if (BuildConfig.DEBUG) Log.d(TAG, "Create");
         super.onCreate();
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -65,9 +65,6 @@ public class HgdNowPlayingService extends Service {
                         0,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
-
-        Intent intent = new Intent(HgdNowPlayingService.this, HgdNowPlayingService.class);
-        intent.putExtra(HgdNowPlayingService.EXTRA_STOP_SERVICE, true);
 
         nowPlayingBuilder =
                 new Notification.Builder(this)
@@ -119,7 +116,7 @@ public class HgdNowPlayingService extends Service {
 
     class HGDClient implements Runnable {
         public void run() {
-            if(BuildConfig.DEBUG) Log.d(TAG, "Thread starting");
+            if (BuildConfig.DEBUG) Log.d(TAG, "Thread starting");
 
             //TODO only for example...
             ArrayList<HgdSong> playlist = MockPlaylist.getPlaylist();
