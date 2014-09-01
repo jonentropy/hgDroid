@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class MockPlaylist {
     public static ArrayList<HgdSong> getPlaylist() {
-        ArrayList<HgdSong> list = new ArrayList<HgdSong>(128);
+        ArrayList<HgdSong> list = new ArrayList<>(128);
 
       //  list.add(new HgdSong().setArtistName("Miigy Mouse").setAlbumName("Noo I gooo").setTrackName("Yarp").setUserName("miig").autoSetAlbumArtUrl());
 

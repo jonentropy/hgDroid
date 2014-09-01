@@ -42,7 +42,7 @@ public final class AlbumArt {
     private static final String AUTO_CORRECT_PARAM = "&autocorrect=1";
     private static final String FORMAT_PARAM = "&format=json";
 
-    private static final ConcurrentHashMap<String, String> cachedUrls = new ConcurrentHashMap<String, String>();
+    private static final ConcurrentHashMap<String, String> cachedUrls = new ConcurrentHashMap<>();
 
     private static final Gson gson = new Gson();
 
