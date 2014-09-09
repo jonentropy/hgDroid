@@ -132,29 +132,29 @@ public class HgdNowPlayingService extends Service {
                 //occurred.
 
                 if (i < playlist.size()) {
+                    HgdSong playing = playlist.get(i);
+                    nowPlayingBuilder.setContentTitle(playing.getTrackName());
+                    nowPlayingBuilder.setContentText(playing.getArtistName());
+
+                    Bitmap b;
                     try {
-                        HgdSong playing = playlist.get(i);
-                        nowPlayingBuilder.setContentTitle(playing.getTrackName());
-                        nowPlayingBuilder.setContentText(playing.getArtistName());
-
-                        Bitmap b;
-                        try {
-                            b = Picasso.with(HgdNowPlayingService.this).load(playing.getAlbumArtUrl()).resizeDimen(android.R.dimen.notification_large_icon_width, android.R.dimen.notification_large_icon_height).get();
-                            nowPlayingBuilder.setLargeIcon(b);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        if (foreground) {
-                            mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
-                        }
-
-                        Thread.sleep(5000);
-
-                        i++;
-                    } catch (InterruptedException e) {
+                        b = Picasso.with(HgdNowPlayingService.this).load(playing.getAlbumArtUrl()).resizeDimen(android.R.dimen.notification_large_icon_width, android.R.dimen.notification_large_icon_height).get();
+                        nowPlayingBuilder.setLargeIcon(b);
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
+
+                    if (foreground) {
+                        mNotificationManager.notify(notificationId, nowPlayingBuilder.build());
+                    }
+
+                    i++;
+                }
+
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
