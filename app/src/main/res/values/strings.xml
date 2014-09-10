@@ -24,7 +24,7 @@
     <string name="user_image_description">User Image</string>
     <string name="queue_shortcut">t</string>
     <string name="queue_song">Queue Song</string>
-    <string name="first_run_message">Welcome to hgDroid!\nPlease add your details to begin.</string>
+    <string name="first_run_message">Welcome to hgDroid!\nPlease add the server details or scan a barcode to begin!</string>
     <string name="go_to_settings">Go to settings</string>
     <string name="error_opening_song">Could not open song</string>
     <string name="no_songs">No songs</string>

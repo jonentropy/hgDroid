@@ -22,8 +22,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class Settings extends PreferenceActivity {
+    public static final String ACTION_SCAN_BARCODE = "scanBarcode";
     private static final int SCAN_REQUEST_CODE = 0;
-
     //Settings for the hgDroid client...
     //Please ensure these names match the key IDs in settings.xml
     //To ensure settings are correctly saved and restored in future
@@ -110,6 +110,21 @@ public class Settings extends PreferenceActivity {
 
     private void handleIntent(Intent intent) {
         if (intent == null) return;
+
+        //first check if the Intent wants us to go straight to barcode
+        //scanning
+
+        if (Settings.ACTION_SCAN_BARCODE.equalsIgnoreCase(intent.getAction())) {
+            //first clear the action so that resuming this Activity
+            //afterwards doesn't keep opening the scanner
+            Intent i = getIntent();
+            i.setAction(null);
+            setIntent(i);
+
+            scanBarcode();
+            return;
+        }
+
         Uri openUri = intent.getData();
         if (openUri != null && getString(R.string.hgd_uri_scheme).equalsIgnoreCase(openUri.getScheme())) {
             promptToAndSaveSettings(openUri, true);

@@ -108,12 +108,22 @@ public class Status extends ListActivity implements OnClickListener {
     public void onResume() {
         super.onResume();
         if (Settings.getFirstRun(this)) {
-            new AlertDialog.Builder(this).setTitle(R.string.app_name).setMessage(getString(R.string.first_run_message)).setPositiveButton(getString(R.string.go_to_settings), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    startActivity(new Intent(Status.this, Settings.class));
-                }
-            }).show();
+            new AlertDialog.Builder(this).setTitle(R.string.app_name).setMessage(getString(R.string.first_run_message))
+                    .setPositiveButton(getString(R.string.go_to_settings), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(Status.this, Settings.class));
+                        }
+                    })
+                    .setNegativeButton(getString(R.string.scan_barcode), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent(Status.this, Settings.class);
+                            intent.setAction(Settings.ACTION_SCAN_BARCODE);
+                            startActivity(intent);
+                        }
+                    })
+                    .show();
         }
         registerReceiver(playlistReceiver, new IntentFilter(HgdNowPlayingService.PLAYLIST_INTENT));
     }
