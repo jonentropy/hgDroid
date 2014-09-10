@@ -8,6 +8,7 @@ import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.http.HttpResponseCache;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -15,6 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import org.canthack.tris.android.mockdata.MockPlaylist;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -46,6 +48,8 @@ public class HgdNowPlayingService extends Service {
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         initNotifications();
+
+        enableHttpResponseCache();
 
         Thread hgdThread = new Thread(null, new HGDClient(), "HGDClientService");
         hgdThread.start();
@@ -111,7 +115,26 @@ public class HgdNowPlayingService extends Service {
     public void onDestroy() {
         if (BuildConfig.DEBUG) Log.d(TAG, "onDestroy");
         threadRunning = false;
+        flushHttpResponseCache();
         super.onDestroy();
+    }
+
+    private void enableHttpResponseCache() {
+        try {
+            File httpCacheDir = new File(getCacheDir(), "http");
+
+            long httpCacheSize = 10 * 1024 * 1024; // 10 MiB
+            HttpResponseCache.install(httpCacheDir, httpCacheSize);
+        } catch (IOException e) {
+            Log.d(TAG, "HTTP response cache installation failed:", e);
+        }
+    }
+
+    private void flushHttpResponseCache() {
+        HttpResponseCache cache = HttpResponseCache.getInstalled();
+        if (cache != null) {
+            cache.flush();
+        }
     }
 
     class HGDClient implements Runnable {

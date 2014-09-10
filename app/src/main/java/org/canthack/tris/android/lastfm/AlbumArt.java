@@ -7,8 +7,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import org.canthack.tris.android.hgdroid.BuildConfig;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,11 +16,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Album artwork downloader. Caches previous URL locations in memory, but
- * not the artwork itself.
+ * Album artwork downloader, using lastfm.
  * Created by tristan on 12/08/2014.
  */
 public final class AlbumArt {
@@ -42,21 +38,9 @@ public final class AlbumArt {
     private static final String AUTO_CORRECT_PARAM = "&autocorrect=1";
     private static final String FORMAT_PARAM = "&format=json";
 
-    private static final ConcurrentHashMap<String, String> cachedUrls = new ConcurrentHashMap<>();
-
     private static final Gson gson = new Gson();
 
     public static String getArtworkUrl(String artist, String album, AlbumArtSize size) {
-        String cachedName = getCacheName(artist, album);
-
-        String cachedUrl = cachedUrls.get(cachedName);
-        if (cachedUrl != null) {
-            if (BuildConfig.DEBUG) Log.d(TAG, "Url cached for " + cachedName);
-            return cachedUrl;
-        }
-
-        if (BuildConfig.DEBUG) Log.d(TAG, "Url NOT cached for " + cachedName);
-
         String urlString;
 
         try {
@@ -100,7 +84,6 @@ public final class AlbumArt {
             for (JsonElement element : imagesArray) {
                 if (element.getAsJsonObject().get(SIZE).getAsString().equalsIgnoreCase(size.name())) {
                     String foundUrl = element.getAsJsonObject().get(TEXT).getAsString();
-                    cachedUrls.put(cachedName, foundUrl);
                     return foundUrl;
                 }
             }
@@ -116,7 +99,4 @@ public final class AlbumArt {
         return null;
     }
 
-    private static String getCacheName(String artist, String album) {
-        return artist + "::" + album;
-    }
 }

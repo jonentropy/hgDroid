@@ -14,8 +14,8 @@ public class MockPlaylist {
         ArrayList<HgdSong> list = new ArrayList<>(128);
 
       //  list.add(new HgdSong().setArtistName("Miigy Mouse").setAlbumName("Noo I gooo").setTrackName("Yarp").setUserName("miig").autoSetAlbumArtUrl());
-
-        list.add(new HgdSong().setArtistName("Metallica").setAlbumName("Ride the Lightning").setTrackName("Creeping Death").setUserName("tris").autoSetAlbumArtUrl().setPlaying(true));
+        list.add(new HgdSong().setArtistName("Machine Head").setAlbumName("The Blackening").setTrackName("Halo").setUserName("me").autoSetAlbumArtUrl().setPlaying(true));
+        list.add(new HgdSong().setArtistName("Metallica").setAlbumName("Ride the Lightning").setTrackName("Creeping Death").setUserName("tris").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("Slayer").setAlbumName("Reign In Blood").setTrackName("Angel of Death").setUserName("timbo").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("Yes").setAlbumName("Fragile").setTrackName("10 Minute Prog").setUserName("sav").autoSetAlbumArtUrl());
         list.add(new HgdSong().setArtistName("CKY").setAlbumName("Volume 1").setTrackName("96 Quite Bitter Beings").setUserName("admin").autoSetAlbumArtUrl());
